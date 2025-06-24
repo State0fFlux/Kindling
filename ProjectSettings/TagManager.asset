@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Sky Enemy
+  - Land Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Enemy
+  - Hero
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: BG-Lightable
+    uniqueID: 4002756277
+    locked: 0
+  - name: BG-Unlightable
+    uniqueID: 2114497215
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: FG-Lightable
+    uniqueID: 2070530241
+    locked: 0
+  - name: FG-Unlightable
+    uniqueID: 3002556987
+    locked: 0
+  - name: UI
+    uniqueID: 1187203387
+    locked: 0
+  m_RenderingLayers:
+  - Default
