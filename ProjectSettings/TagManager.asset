@@ -40,11 +40,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: BG-Lightable
-    uniqueID: 4002756277
-    locked: 0
   - name: BG-Unlightable
     uniqueID: 2114497215
+    locked: 0
+  - name: BG-Lightable
+    uniqueID: 4002756277
     locked: 0
   - name: Default
     uniqueID: 0

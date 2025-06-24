@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growthRate: 0.05
   growth: 0
+  hive: {fileID: 6270356947817481618, guid: df06afbf556ec431f8443e74a0201906, type: 3}
 --- !u!212 &6949147807012823569
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -91,8 +92,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1292410309
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 1103326597, guid: 026cb166cc90447b395ea79b821a8366, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -6783900630120892731, guid: e3fcbb5ab74b04e3cbbac37c5bc41cfd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

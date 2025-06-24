@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: e3fcbb5ab74b04e3cbbac37c5bc41cfd
+guid: 20cfe996f44c348a1bdf2631ae175c68
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6783900630120892731
-    second: tree 1_0
+      213: -6515096291808612792
+    second: clouds_small_0
   - first:
-      213: 9005023453779950976
-    second: tree 1_1
+      213: 8862728424218911325
+    second: clouds_small_1
   - first:
-      213: 8348125773697536172
-    second: tree 1_2
-  - first:
-      213: -5879792151761536445
-    second: tree 1_3
+      213: 710747998321932869
+    second: clouds_small_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -135,89 +132,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tree 1_0
+      name: clouds_small_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 65
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84e6849e07ab595a0800000000000000
+      internalID: -6515096291808612792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clouds_small_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 59
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d52635a8b8cbefa70800000000000000
+      internalID: 8862728424218911325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clouds_small_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        y: 41
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c6781ec15ebad1a0800000000000000
-      internalID: -6783900630120892731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tree 1_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 08d7d9cde1548fc70800000000000000
-      internalID: 9005023453779950976
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tree 1_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca0568139208ad370800000000000000
-      internalID: 8348125773697536172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tree 1_3
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34abf11c038c66ea0800000000000000
-      internalID: -5879792151761536445
+      spriteID: 54a7ccce9851dd900800000000000000
+      internalID: 710747998321932869
       vertices: []
       indices: 
       edges: []
@@ -226,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7c2e4ffdaa19f4ba0b91b4c66290c035
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -236,10 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tree 1_0: -6783900630120892731
-      tree 1_1: 9005023453779950976
-      tree 1_2: 8348125773697536172
-      tree 1_3: -5879792151761536445
+      clouds_small_0: -6515096291808612792
+      clouds_small_1: 8862728424218911325
+      clouds_small_2: 710747998321932869
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

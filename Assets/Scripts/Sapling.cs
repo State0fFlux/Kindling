@@ -6,13 +6,19 @@ public class Sapling : MonoBehaviour
     [SerializeField] private float growthRate; // Growth rate per second
     [SerializeField] private float growth = 0; // Initial growth from 0 to 1
 
+    [Header("Game Objects")]
+    [SerializeField] private GameObject hive;
+
     // Components
     private Animator animator;
+    private SpriteRenderer sr;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+        sr.sortingOrder = Random.value > 0.5f ? 1 : -1; // Randomly set sorting order for visual variety
     }
 
     // Update is called once per frame
@@ -21,7 +27,12 @@ public class Sapling : MonoBehaviour
         if (growth < 1f)
         {
             growth += Time.deltaTime * growthRate; // Increase growth over time
-            if (growth > 1f) growth = 1f; // Clamp to max growth
+        }
+        if (growth >= 1f)
+        {
+            hive.GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder; // Match hive sorting order
+            Instantiate(hive, transform.position, Quaternion.identity); // Spawn hive when fully grown
+            Destroy(gameObject); // Destroy the sapling when fully grown
         }
     }
 

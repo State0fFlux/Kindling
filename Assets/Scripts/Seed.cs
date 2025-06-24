@@ -16,6 +16,8 @@ public class Seed : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocityY = -Global.speed * speedMult; // fall down at constant speed
+        rb.rotation = Random.Range(0, 360); // random initial rotation
+        rb.angularVelocity = Random.Range(100, 200) * (Random.value > 0.5f ? 1 : -1); // random rotation speed
     }
 
     void Update()

@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af22a2a857b204f5da5a89761531ab05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMult: 3
+  speedMult: 2
   tree: {fileID: 4820559907008517418, guid: e6f51039f5dd94633a2847a242d7d803, type: 3}
 --- !u!50 &5967625478149473554
 Rigidbody2D:
@@ -64,7 +64,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -119,8 +119,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1292410309
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 2686692645927855264, guid: 22f9ee3ffc2214a148be1bc567b39415, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 8384142458865905078, guid: a92403e02484a4c2ba25927395a5e4f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
