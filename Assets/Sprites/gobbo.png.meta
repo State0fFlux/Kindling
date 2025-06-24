@@ -1,31 +1,34 @@
 fileFormatVersion: 2
-guid: 213597f0821704a9386403493400bbe1
+guid: f1af18d14290f46a5bb970a4aa94c7f3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6180547344300440527
-    second: gobbo_0
+      213: 6515167129725881402
+    second: gobbo 1_0
   - first:
-      213: -1463744183462588852
-    second: gobbo_1
+      213: 3741479494473487850
+    second: gobbo 1_1
   - first:
-      213: -380693357887201091
-    second: gobbo_2
+      213: 8940244396413692821
+    second: gobbo 1_2
   - first:
-      213: 5248416305767311596
-    second: gobbo_3
+      213: -5317068328603086693
+    second: gobbo 1_3
   - first:
-      213: -6964703544649831663
-    second: gobbo_4
+      213: 44007895851991080
+    second: gobbo 1_4
   - first:
-      213: 3081175202405384482
-    second: gobbo_5
+      213: 4874547981761761058
+    second: gobbo 1_5
   - first:
-      213: -2314821433821164950
-    second: gobbo_6
+      213: -5377372881956222798
+    second: gobbo 1_6
   - first:
-      213: 2984118915230757300
-    second: gobbo_7
+      213: 8440110996239052044
+    second: gobbo 1_7
+  - first:
+      213: -2367335658202383448
+    second: gobbo 1_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -45,7 +48,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -69,7 +72,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -147,7 +150,139 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gobbo_0
+      name: gobbo 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b44f92550cfb4d95a2d4b161b8a38f9
+      internalID: 996664232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gobbo 1_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ce448e5f99545188b3c99d532b7bec
+      internalID: -2126253775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gobbo 1_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f96ead5dbc12441da9c352666ccf612
+      internalID: -2004178085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gobbo 1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 530cb73aa2fa5403fa763772bbcfe16d
+      internalID: -1363480053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gobbo 1_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3cbadb2a1464e71aa071f6d37ca1f7
+      internalID: -167755359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gobbo 1_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a01748b0b1ce45d3a2efc2774039f75
+      internalID: 58086075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gobbo 1_6
       rect:
         serializedVersion: 2
         x: 0
@@ -162,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ebe3f124cccd469b9d0d356edf3a213
-      internalID: 6180547344300440527
+      spriteID: f345085bf46bd432a9930a6d288fc866
+      internalID: -483294756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gobbo_1
+      name: gobbo 1_7
       rect:
         serializedVersion: 2
         x: 16
@@ -184,14 +319,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec46db15216254415b17f0b2020f471d
-      internalID: -1463744183462588852
+      spriteID: fe88e5fa0057b4d929d05925c61ef303
+      internalID: -266154819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gobbo_2
+      name: gobbo 1_8
       rect:
         serializedVersion: 2
         x: 32
@@ -206,36 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d26dcf8d0c30b460889b07298b37279e
-      internalID: -380693357887201091
+      spriteID: d324f658c9212462e85b9ad5d2fa7544
+      internalID: -196523602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gobbo_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 852675d4880fd420892417c83c2c1166
-      internalID: 5248416305767311596
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gobbo_4
+      name: gobbo 1_9
       rect:
         serializedVersion: 2
         x: 0
@@ -250,14 +363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1426c421425434977a86c1e9261bb08b
-      internalID: -6964703544649831663
+      spriteID: 4d0dc21230fe449aab47cd272fff4360
+      internalID: -265110049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gobbo_5
+      name: gobbo 1_10
       rect:
         serializedVersion: 2
         x: 16
@@ -272,52 +385,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb54d387730c541a9bc5605a17d6af55
-      internalID: 3081175202405384482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gobbo_6
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bcc05cd215a84dacadf02ae53f12add
-      internalID: -2314821433821164950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gobbo_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0aa8cc15ca0704e2582c16946e324058
-      internalID: 2984118915230757300
+      spriteID: 152c7247386d5446e8ab68c5ef287fdc
+      internalID: -624649322
       vertices: []
       indices: 
       edges: []
@@ -326,7 +395,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d7e7b54b6906948e09d2acad50567125
+    spriteID: 77191ff4cc0f9461b8fb557a9277edc1
     internalID: 0
     vertices: []
     indices: 
@@ -336,14 +405,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      gobbo_0: 6180547344300440527
-      gobbo_1: -1463744183462588852
-      gobbo_2: -380693357887201091
-      gobbo_3: 5248416305767311596
-      gobbo_4: -6964703544649831663
-      gobbo_5: 3081175202405384482
-      gobbo_6: -2314821433821164950
-      gobbo_7: 2984118915230757300
+      gobbo 1_0: 996664232
+      gobbo 1_1: -2126253775
+      gobbo 1_10: -624649322
+      gobbo 1_2: -2004178085
+      gobbo 1_3: -1363480053
+      gobbo 1_4: -167755359
+      gobbo 1_5: 58086075
+      gobbo 1_6: -483294756
+      gobbo 1_7: -266154819
+      gobbo 1_8: -196523602
+      gobbo 1_9: -265110049
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

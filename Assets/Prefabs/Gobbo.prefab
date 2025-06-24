@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMult: 2
   fireballs: 20
-  shootCooldown: 1
+  actionCooldown: 0.5
   fireball: {fileID: 4813969748930390085, guid: d81243434c59d47f6b9d82bc10fbe939, type: 3}
 --- !u!50 &348563804956860879
 Rigidbody2D:
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_SortingLayerID: 2070530241
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 6180547344300440527, guid: 213597f0821704a9386403493400bbe1, type: 3}
+  m_Sprite: {fileID: -2126253775, guid: f1af18d14290f46a5bb970a4aa94c7f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
