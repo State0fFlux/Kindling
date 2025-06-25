@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e2f64271e7989406f9bae0d52c157fe5
+guid: bde1c7851b1194903b923b806fa3f65a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 860544438658991203
-    second: valley_0
+      213: 5450555382696487677
+    second: valley.png - Layer 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: valley_0
+      name: valley.png - Layer 2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 160
-        height: 10
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36405bb8b9441fb00800000000000000
-      internalID: 860544438658991203
+      spriteID: dfaa7360e3344ab40800000000000000
+      internalID: 5450555382696487677
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      valley_0: 860544438658991203
+      valley.png - Layer 2_0: 5450555382696487677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 20cfe996f44c348a1bdf2631ae175c68
+guid: a7c92ecf6082b4f9eb857bd5b8268f35
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6515096291808612792
-    second: clouds_small_0
-  - first:
-      213: 8862728424218911325
-    second: clouds_small_1
-  - first:
-      213: 710747998321932869
-    second: clouds_small_2
+      213: 3457881477395382771
+    second: Mountain Back 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +49,7 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -132,57 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: clouds_small_0
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 65
-        width: 19
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 84e6849e07ab595a0800000000000000
-      internalID: -6515096291808612792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clouds_small_1
-      rect:
-        serializedVersion: 2
-        x: 130
-        y: 59
-        width: 22
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d52635a8b8cbefa70800000000000000
-      internalID: 8862728424218911325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clouds_small_2
+      name: Mountain Back 1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 41
-        width: 15
-        height: 7
+        y: 0
+        width: 160
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 54a7ccce9851dd900800000000000000
-      internalID: 710747998321932869
+      spriteID: 3f10e8f02ecdcff20800000000000000
+      internalID: 3457881477395382771
       vertices: []
       indices: 
       edges: []
@@ -211,9 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      clouds_small_0: -6515096291808612792
-      clouds_small_1: 8862728424218911325
-      clouds_small_2: 710747998321932869
+      Mountain Back 1_0: 3457881477395382771
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: cb7a280dec8bf41e58a5b2c251bf73b2
+guid: f9a88da069e1a428f8ab00cb7720dafe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5147803836289232483
-    second: clouds_big_0
-  - first:
-      213: -4929020624698763728
-    second: clouds_big_1
+      213: -6704604235179609730
+    second: valley.png - Layer 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,8 +49,8 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -129,45 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: clouds_big_0
+      name: valley.png - Layer 1_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 50
-        width: 37
-        height: 24
+        x: 0
+        y: 0
+        width: 160
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36ea96b905ca07740800000000000000
-      internalID: 5147803836289232483
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clouds_big_1
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 46
-        width: 42
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 036914e5bd9989bb0800000000000000
-      internalID: -4929020624698763728
+      spriteID: e713a8a78f574f2a0800000000000000
+      internalID: -6704604235179609730
       vertices: []
       indices: 
       edges: []
@@ -177,7 +152,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -186,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      clouds_big_0: 5147803836289232483
-      clouds_big_1: -4929020624698763728
+      valley.png - Layer 1_0: -6704604235179609730
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

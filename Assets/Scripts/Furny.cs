@@ -6,6 +6,7 @@ public class Furny : MonoBehaviour
 {
     [Header("Furny Settings")]
     [SerializeField] private float hp = 100f; // Health points, controls light
+    [SerializeField] private float flickerIntensity = 0.2f; // Intensity of flicker effect
 
     // Components
     Light2D fire;
@@ -26,7 +27,7 @@ public class Furny : MonoBehaviour
 
     void FixedUpdate()
     {
-        fire.falloffIntensity = Mathf.Lerp(fire.falloffIntensity, 0.5f + Random.Range(-0.1f, 0.1f), 0.1f); // Interpolate light intensity based on health
+        fire.falloffIntensity = Mathf.Lerp(fire.falloffIntensity, 0.5f + Random.Range(-flickerIntensity/2, flickerIntensity/2), 0.1f); // flicker effect
         fire.shapeLightFalloffSize = Mathf.Lerp(fire.shapeLightFalloffSize, hp / 10, 0.4f); // reflect hp in light size
     }
 }

@@ -1,49 +1,49 @@
 fileFormatVersion: 2
-guid: 7e68ecf6b8cff4f49b4fccdb987a483e
+guid: 4c12e6d8120444f6896081e41a7acca4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2586246188133376992
-    second: christmas_trees_1_0
+      213: -4840804156995899150
+    second: valley.png - Reference Layer 1 - 2_0
   - first:
-      213: 2725673981217985428
-    second: christmas_trees_1_1
+      213: 4871376589596110550
+    second: valley.png - Reference Layer 1 - 2_1
   - first:
-      213: -9103277119439935136
-    second: christmas_trees_1_2
+      213: -2647184106346373735
+    second: valley.png - Reference Layer 1 - 2_2
   - first:
-      213: -2539877337337398512
-    second: christmas_trees_1_3
+      213: -3813921622716862884
+    second: valley.png - Reference Layer 1 - 2_3
   - first:
-      213: -8027423253602246568
-    second: christmas_trees_1_4
+      213: -4250917604936128088
+    second: valley.png - Reference Layer 1 - 2_4
   - first:
-      213: 1763282151678585025
-    second: christmas_trees_1_5
+      213: 707502292967645077
+    second: valley.png - Reference Layer 1 - 2_5
   - first:
-      213: -4724751735007515113
-    second: christmas_trees_1_6
+      213: 3862647121935683254
+    second: valley.png - Reference Layer 1 - 2_6
   - first:
-      213: 816224858005733785
-    second: christmas_trees_1_7
+      213: -1475549391065015640
+    second: valley.png - Reference Layer 1 - 2_7
   - first:
-      213: -8950992486671306103
-    second: christmas_trees_1_8
+      213: 2289256692565796944
+    second: valley.png - Reference Layer 1 - 2_8
   - first:
-      213: 6058458308380869084
-    second: christmas_trees_1_9
+      213: 348815871727643817
+    second: valley.png - Reference Layer 1 - 2_9
   - first:
-      213: 2694920450198824185
-    second: christmas_trees_1_10
+      213: 8441452684455452467
+    second: valley.png - Reference Layer 1 - 2_10
   - first:
-      213: -1558018016586669581
-    second: christmas_trees_1_11
+      213: 5624857439643701319
+    second: valley.png - Reference Layer 1 - 2_11
   - first:
-      213: 5297553158417812666
-    second: christmas_trees_1_12
+      213: -4264092353861599176
+    second: valley.png - Reference Layer 1 - 2_12
   - first:
-      213: 6013979520618629631
-    second: christmas_trees_1_13
+      213: 5296784476083763768
+    second: valley.png - Reference Layer 1 - 2_13
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -88,7 +88,7 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -165,11 +165,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: christmas_trees_1_0
+      name: valley.png - Reference Layer 1 - 2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
+        y: 0
         width: 11
         height: 20
       alignment: 0
@@ -180,18 +180,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02c1a9e5bcecb1cd0800000000000000
-      internalID: -2586246188133376992
+      spriteID: 2f07603544202dcb0800000000000000
+      internalID: -4840804156995899150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_1
+      name: valley.png - Reference Layer 1 - 2_1
       rect:
         serializedVersion: 2
         x: 10
-        y: 4
+        y: 0
         width: 13
         height: 19
       alignment: 0
@@ -202,18 +202,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 493d5007b0a83d520800000000000000
-      internalID: 2725673981217985428
+      spriteID: 6dea706d23b9a9340800000000000000
+      internalID: 4871376589596110550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_2
+      name: valley.png - Reference Layer 1 - 2_2
       rect:
         serializedVersion: 2
         x: 22
-        y: 4
+        y: 0
         width: 8
         height: 20
       alignment: 0
@@ -224,18 +224,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06967dbe0b9aaa180800000000000000
-      internalID: -9103277119439935136
+      spriteID: 99d1a26a410534bd0800000000000000
+      internalID: -2647184106346373735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_3
+      name: valley.png - Reference Layer 1 - 2_3
       rect:
         serializedVersion: 2
         x: 29
-        y: 4
+        y: 1
         width: 18
         height: 22
       alignment: 0
@@ -246,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 01b70feb40b80ccd0800000000000000
-      internalID: -2539877337337398512
+      spriteID: c5ea7ccbd7a321bc0800000000000000
+      internalID: -3813921622716862884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_4
+      name: valley.png - Reference Layer 1 - 2_4
       rect:
         serializedVersion: 2
         x: 46
-        y: 6
+        y: 3
         width: 8
-        height: 21
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 850e35bf41dd89090800000000000000
-      internalID: -8027423253602246568
+      spriteID: 8a9e35ce5f4b105c0800000000000000
+      internalID: -4250917604936128088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_5
+      name: valley.png - Reference Layer 1 - 2_5
       rect:
         serializedVersion: 2
         x: 53
-        y: 4
+        y: 0
         width: 19
-        height: 22
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,18 +290,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1c8a69156cf687810800000000000000
-      internalID: 1763282151678585025
+      spriteID: 59f5c12469d81d900800000000000000
+      internalID: 707502292967645077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_6
+      name: valley.png - Reference Layer 1 - 2_6
       rect:
         serializedVersion: 2
         x: 71
-        y: 4
+        y: 0
         width: 8
         height: 18
       alignment: 0
@@ -312,20 +312,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71e67fe645f4e6eb0800000000000000
-      internalID: -4724751735007515113
+      spriteID: 6be49ab9711ea9530800000000000000
+      internalID: 3862647121935683254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_7
+      name: valley.png - Reference Layer 1 - 2_7
       rect:
         serializedVersion: 2
         x: 78
-        y: 3
+        y: 0
         width: 19
-        height: 21
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,18 +334,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 991864e0f20d35b00800000000000000
-      internalID: 816224858005733785
+      spriteID: 8aa960985abc58be0800000000000000
+      internalID: -1475549391065015640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_8
+      name: valley.png - Reference Layer 1 - 2_8
       rect:
         serializedVersion: 2
         x: 96
-        y: 4
+        y: 0
         width: 8
         height: 21
       alignment: 0
@@ -356,18 +356,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 98234ccf1cfa7c380800000000000000
-      internalID: -8950992486671306103
+      spriteID: 058e11835d215cf10800000000000000
+      internalID: 2289256692565796944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_9
+      name: valley.png - Reference Layer 1 - 2_9
       rect:
         serializedVersion: 2
         x: 103
-        y: 5
+        y: 1
         width: 19
         height: 19
       alignment: 0
@@ -378,14 +378,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd14e8d7bb7f31450800000000000000
-      internalID: 6058458308380869084
+      spriteID: 9ac285eef2e37d400800000000000000
+      internalID: 348815871727643817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_10
+      name: valley.png - Reference Layer 1 - 2_10
       rect:
         serializedVersion: 2
         x: 121
@@ -400,19 +400,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f469040fd7466520800000000000000
-      internalID: 2694920450198824185
+      spriteID: 33f1c35ed70162570800000000000000
+      internalID: 8441452684455452467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_11
+      name: valley.png - Reference Layer 1 - 2_11
       rect:
         serializedVersion: 2
         x: 128
-        y: 3
+        y: 1
         width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7401d222a028f0e40800000000000000
+      internalID: 5624857439643701319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valley.png - Reference Layer 1 - 2_12
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 0
+        width: 8
         height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -422,40 +444,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f161bf5edec06ae0800000000000000
-      internalID: -1558018016586669581
+      spriteID: 830ce96a896e2d4c0800000000000000
+      internalID: -4264092353861599176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: christmas_trees_1_12
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 3
-        width: 8
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: abc0e3aa780b48940800000000000000
-      internalID: 5297553158417812666
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: christmas_trees_1_13
+      name: valley.png - Reference Layer 1 - 2_13
       rect:
         serializedVersion: 2
         x: 153
-        y: 4
+        y: 0
         width: 7
         height: 15
       alignment: 0
@@ -466,8 +466,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ff982f4b282f57350800000000000000
-      internalID: 6013979520618629631
+      spriteID: 83ab6ccda65f18940800000000000000
+      internalID: 5296784476083763768
       vertices: []
       indices: 
       edges: []
@@ -486,20 +486,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      christmas_trees_1_0: -2586246188133376992
-      christmas_trees_1_1: 2725673981217985428
-      christmas_trees_1_10: 2694920450198824185
-      christmas_trees_1_11: -1558018016586669581
-      christmas_trees_1_12: 5297553158417812666
-      christmas_trees_1_13: 6013979520618629631
-      christmas_trees_1_2: -9103277119439935136
-      christmas_trees_1_3: -2539877337337398512
-      christmas_trees_1_4: -8027423253602246568
-      christmas_trees_1_5: 1763282151678585025
-      christmas_trees_1_6: -4724751735007515113
-      christmas_trees_1_7: 816224858005733785
-      christmas_trees_1_8: -8950992486671306103
-      christmas_trees_1_9: 6058458308380869084
+      valley.png - Reference Layer 1 - 2_0: -4840804156995899150
+      valley.png - Reference Layer 1 - 2_1: 4871376589596110550
+      valley.png - Reference Layer 1 - 2_10: 8441452684455452467
+      valley.png - Reference Layer 1 - 2_11: 5624857439643701319
+      valley.png - Reference Layer 1 - 2_12: -4264092353861599176
+      valley.png - Reference Layer 1 - 2_13: 5296784476083763768
+      valley.png - Reference Layer 1 - 2_2: -2647184106346373735
+      valley.png - Reference Layer 1 - 2_3: -3813921622716862884
+      valley.png - Reference Layer 1 - 2_4: -4250917604936128088
+      valley.png - Reference Layer 1 - 2_5: 707502292967645077
+      valley.png - Reference Layer 1 - 2_6: 3862647121935683254
+      valley.png - Reference Layer 1 - 2_7: -1475549391065015640
+      valley.png - Reference Layer 1 - 2_8: 2289256692565796944
+      valley.png - Reference Layer 1 - 2_9: 348815871727643817
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

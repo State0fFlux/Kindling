@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6479681021247000405}
   - component: {fileID: 6634373736162628896}
   - component: {fileID: 622302193492313563}
+  - component: {fileID: 1261885976512809423}
   m_Layer: 6
   m_Name: Pine Bird
   m_TagString: Sky Enemy
@@ -94,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: -1292410309
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1655892946, guid: e9e84c91c28e64e2886a2443aadb562c, type: 3}
+  m_Sprite: {fileID: 5402810748506560962, guid: 42079924f38eb424bbc1541a6cdfa48b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -168,3 +169,25 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!95 &1261885976512809423
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779175396243794579}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a76f9cfa738f047848a6d539c8c7e392, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

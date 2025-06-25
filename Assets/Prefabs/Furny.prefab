@@ -121,8 +121,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2849189262085787910}
-  - component: {fileID: 2615926730419012074}
   - component: {fileID: 8550809603829861986}
+  - component: {fileID: 2615926730419012074}
   m_Layer: 7
   m_Name: Furny
   m_TagString: Untagged
@@ -146,6 +146,20 @@ Transform:
   - {fileID: 8862500681528105033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8550809603829861986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336699660675938762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5f8d4f2a98c4f678b4dcfde2dcf273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  flickerIntensity: 0.2
 --- !u!212 &2615926730419012074
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -201,15 +215,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &8550809603829861986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7336699660675938762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af5f8d4f2a98c4f678b4dcfde2dcf273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
