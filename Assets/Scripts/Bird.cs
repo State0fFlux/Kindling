@@ -23,6 +23,7 @@ public class Bird : MonoBehaviour
         // initialize bird position and direction
         flyingRight = Random.value > 0.5f;
         GetComponent<SpriteRenderer>().flipX = flyingRight;
+        GetComponent<Animator>().speed = speedMult;
 
         float spawnX = flyingRight ? Global.borderLeft - 1f : Global.borderRight + 1f;
         float spawnY = Global.skyY * Random.Range(0.8f, 1.2f); // Randomize Y position a bit

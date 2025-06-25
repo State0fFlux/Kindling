@@ -1,10 +1,12 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Gobbo : MonoBehaviour
+public class Gobbo : HPManager
 {
     [Header("Player Settings")]
     [SerializeField] private float speedMult = 1f;
-    [SerializeField] private int fireballs;
+    [SerializeField] private int startingFireballs = 3; // initial number of fireballs;
     [SerializeField] private float actionCooldown = 1f;
 
     [Header("Game Objects")]
@@ -13,6 +15,7 @@ public class Gobbo : MonoBehaviour
     // Stats
     private float lastAction = 0f;
     private bool immobilized = false;
+    private Dictionary<GameObject, int> inventory = new Dictionary<GameObject, int>();
 
     // Components
     private Rigidbody2D rb;
@@ -25,14 +28,19 @@ public class Gobbo : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        inventory.Add(fireball, startingFireballs); // Initialize inventory with fireballs
+        UIManager.Instance.UpdateInventory(inventory);
     }
 
 
     void Update()
     {
+        Heal(Time.deltaTime / 4); // Heal slowly over time
+
         lastAction += Time.deltaTime;
 
-        if (Input.GetButtonDown("Shoot") && lastAction >= actionCooldown && fireballs > 0)
+        if (Input.GetButtonDown("Shoot") && lastAction >= actionCooldown && inventory[fireball] > 0)
         {
             Shoot();
         }
@@ -76,7 +84,8 @@ public class Gobbo : MonoBehaviour
 
     void Shoot()
     {
-        fireballs--;
+        inventory[fireball]--;
+        UIManager.Instance.UpdateInventory(inventory); // Update inventory UI
         lastAction = 0f;
         immobilized = true;
         animator.SetTrigger("Shoot");
