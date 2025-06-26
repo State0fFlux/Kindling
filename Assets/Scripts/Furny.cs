@@ -3,13 +3,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class Furny : HPManager
+public class Furny : MonoBehaviour
 {
     [Header("Furny Settings")]
     [SerializeField] private float flickerAmplitude; // Amplitude of flicker effect
     [SerializeField] private float flickerFrequency; // Frequency of flicker effect
 
     // Components
+    Stat health;
     Light2D fire;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,18 +18,19 @@ public class Furny : HPManager
     {
         fire = GetComponentInChildren<Light2D>();
         StartCoroutine(Flicker());
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Decrease health points over time
-        Hurt(Time.deltaTime);
+        health.Decay(1f);
     }
 
     void FixedUpdate()
     {
-        fire.shapeLightFalloffSize = currHP / maxHP * 12; // reflect hp in light size
+        fire.shapeLightFalloffSize = health.GetStat() / health.GetMax() * 12; // reflect hp in light size
         fire.intensity = fire.shapeLightFalloffSize / 3;
     }
 

@@ -25,16 +25,17 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void UpdateHP(GameObject hpBar, float currHP, float maxHP)
+    public void UpdateStat(GameObject statBar, float currStat, float maxStat)
     {
-        RectTransform rt = hpBar.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(maxHP * 2, rt.sizeDelta.y); // adjust max health bar width
+        RectTransform rt = statBar.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(maxStat * 2, rt.sizeDelta.y); // adjust max health bar width
 
-        Slider slider = hpBar.GetComponent<Slider>();
-        slider.value = currHP; // adjust current health bar fill
+        Slider slider = statBar.GetComponent<Slider>();
+        slider.maxValue = maxStat; // adjust max health bar fill
+        slider.value = currStat; // adjust current health bar fill
     }
 
-    public void UpdateInventory(Dictionary<GameObject, int> inventory)
+    public void UpdateInventory(Item[] inventory)
     {
         inventoryText.text = "";
         foreach (GameObject item in inventory.Keys)

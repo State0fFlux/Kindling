@@ -42,7 +42,7 @@ public class Seed : MonoBehaviour
 
         if (collider.gameObject.CompareTag("Hero"))
         {
-            collider.gameObject.GetComponent<HPManager>().Hurt(damage); // TODO: gobbo eats birds to heal, furny eats wood to heal
+            collider.gameObject.GetComponent<Stat>().Hurt(damage); // TODO: gobbo eats birds to heal, furny eats wood to heal
             animator.SetTrigger("Explode");
         }
         else if (collider.gameObject.CompareTag("Ground"))

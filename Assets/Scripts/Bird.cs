@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Bird : MonoBehaviour
 {
     [Header("Bird Settings")]
     [SerializeField] private float speedMult = 1f;
-    [SerializeField] private int dropCount = 1; // number of seeds to drop
+    [SerializeField] private int dropCount = 2; // number of seeds to drop
 
     [Header("Game Objects")]
     [SerializeField] private GameObject seed;
@@ -20,27 +21,42 @@ public class Bird : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // 
         // initialize bird position and direction
-        flyingRight = Random.value > 0.5f;
+        flyingRight = UnityEngine.Random.value > 0.5f;
         GetComponent<SpriteRenderer>().flipX = flyingRight;
         GetComponent<Animator>().speed = speedMult;
 
         float spawnX = flyingRight ? Global.borderLeft - 1f : Global.borderRight + 1f;
-        float spawnY = Global.skyY * Random.Range(0.8f, 1.2f); // Randomize Y position a bit
+        float spawnY = Global.skyY * UnityEngine.Random.Range(0.8f, 1.2f); // Randomize Y position a bit
         transform.position = new Vector2(spawnX, spawnY);
 
 
         float spawnWidth = (Global.borderRight - Global.borderLeft) * 0.8f;
-        float subWidth = spawnWidth / dropCount;
 
         dropPoints = new float[dropCount];
         hasDropped = new bool[dropCount];
 
-        for (int i = 0; i < dropCount; i++)
+        bool droppingOnFurny = UnityEngine.Random.value < 0.4f; // 40% chance to drop on Furny
+        if (droppingOnFurny)
         {
-            dropPoints[i] = Random.Range(-spawnWidth/2 + i * subWidth, -spawnWidth/2 + (i + 1) * subWidth);
+            dropPoints[0] = Global.FurnyX; // First drop on Furny
+            hasDropped[0] = false;
+        }
+        for (int i = droppingOnFurny? 1: 0; i < dropCount; i++)
+        {
+            float roll = UnityEngine.Random.value;
+            if (roll < 0.7) // 50% chance to drop on left side
+            {
+                dropPoints[i] = UnityEngine.Random.Range(-spawnWidth / 2, Global.FurnyX - 3); // provide cushion
+            }
+            else // 50% chance to drop on right side
+            {
+                dropPoints[i] = UnityEngine.Random.Range(Global.FurnyX + 3, spawnWidth / 2);
+            }
             hasDropped[i] = false;
         }
+        Array.Sort(dropPoints);
 
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocityX = flyingRight ? Global.speed * speedMult : -Global.speed * speedMult;
