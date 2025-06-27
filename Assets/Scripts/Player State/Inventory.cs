@@ -4,9 +4,9 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private Item[] items; // array to hold items in the inventory
+    [SerializeField] private int slots;
     
     // Stats
-    private int slots = 8;
     private bool equipped = false;
     private int selectedIndex = 0;
 
@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+        UIManager.Instance.InitializeInventory(items, selectedIndex, equipped, slots);
     }
 
     public Item GetEquipped()

@@ -72,8 +72,8 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 50
   currStat: 0
-  hurtColor: {r: 1, g: 1, b: 1, a: 1}
-  flashDuration: 0.25
+  hurtColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.5
 --- !u!114 &2960353155086253449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   items:
   - {fileID: 2022755337554948150, guid: 0d71ead194a274027a00757c6fe68342, type: 3}
   - {fileID: 7744812824053924148, guid: d81243434c59d47f6b9d82bc10fbe939, type: 3}
+  - {fileID: 7744812824053924148, guid: 2bcc944fc0ec84d6db309394213a77e3, type: 3}
 --- !u!50 &348563804956860879
 Rigidbody2D:
   serializedVersion: 5
@@ -117,9 +118,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 2
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -130,7 +131,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!212 &4057156729182975643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -172,8 +173,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2070530241
-  m_SortingLayer: 1
+  m_SortingLayerID: -1292410309
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2126253775, guid: f1af18d14290f46a5bb970a4aa94c7f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -255,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5392221137999063529}
   m_Layer: 7
-  m_Name: CenterOfBody
+  m_Name: Projectile Spawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

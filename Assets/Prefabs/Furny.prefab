@@ -177,8 +177,8 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 100
   currStat: 0
-  hurtColor: {r: 1, g: 1, b: 1, a: 1}
-  flashDuration: 0.25
+  hurtColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.5
 --- !u!212 &2615926730419012074
 SpriteRenderer:
   m_ObjectHideFlags: 0

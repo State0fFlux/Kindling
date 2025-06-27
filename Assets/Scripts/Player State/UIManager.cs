@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -11,10 +12,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Color selectedTint;
     [SerializeField] private Color unselectedTint;
     [SerializeField] private Color unobtainedTint;
+    [SerializeField] private int padding;
+    [SerializeField] private Sprite emptyIcon;
 
 
     [Header("Game Objects")]
-    [SerializeField] private GameObject[] tiles;
+    [SerializeField] private GameObject tile;
+    [SerializeField] private GameObject tileBox;
+
+    // Stats
+    private GameObject[] tiles;
 
     void Awake()
     {
@@ -25,13 +32,6 @@ public class UIManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        
-        Transform tilesParent = transform.Find("Tiles");
-        tiles = new GameObject[tilesParent.childCount];
-        for (int i = 0; i < tilesParent.childCount; i++)
-        {
-            tiles[i] = tilesParent.GetChild(i).gameObject;
-        }
     }
 
     public void UpdateStat(GameObject statBar, float currStat, float maxStat)
@@ -44,27 +44,41 @@ public class UIManager : MonoBehaviour
         slider.value = currStat; // adjust current health bar fill
     }
 
+    public void InitializeInventory(Item[] inventory, int selectedIndex, bool equipped, int slots)
+    {
+        tileBox.GetComponent<RectTransform>().sizeDelta = new Vector2(padding + slots * (padding + tile.GetComponent<RectTransform>().sizeDelta.x), 2 * padding + tile.GetComponent<RectTransform>().sizeDelta.y);
+        tiles = new GameObject[slots];
+        for (int i = 0; i < slots; i++)
+        {
+            RectTransform rt = tile.GetComponent<RectTransform>();
+            rt.anchoredPosition = new Vector2(padding + i * (padding + rt.sizeDelta.x), 0);
+            tiles[i] = Instantiate(tile, tileBox.transform);
+        }
+
+        UpdateInventory(inventory, selectedIndex, equipped);
+    }
+
     public void UpdateInventory(Item[] inventory, int selectedIndex, bool equipped)
     {
         for (int i = 0; i < inventory.Length; i++)
         {
-            Image image = tiles[i].GetComponent<Image>();
+            Image icon = tiles[i].transform.GetChild(0).GetComponent<Image>();
             TextMeshProUGUI text = tiles[i].GetComponentInChildren<TextMeshProUGUI>();
-            image.sprite = inventory[i] ? inventory[i].GetIcon() : null;
+            icon.sprite = inventory[i] ? inventory[i].GetIcon() : emptyIcon;
             if (selectedIndex == i)
             {
                 if (equipped)
                 {
-                    image.color = equippedTint;
+                    icon.color = equippedTint;
                 }
                 else
                 {
-                    image.color = selectedTint;
+                    icon.color = selectedTint;
                 }
             }
             else
             {
-                image.color = unselectedTint;
+                icon.color = unselectedTint;
             }
             text.text = (inventory[i] && !(inventory[i] is Melee)) ? inventory[i].GetCount().ToString() : "";
         }

@@ -47,13 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcab40d11b9454380a9cdd9b2a00d50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 80
-  icon: {fileID: 2686692645927855264, guid: 22f9ee3ffc2214a148be1bc567b39415, type: 3}
+  count: 100
+  icon: {fileID: 1860037726, guid: 4c774015f423d464f9ec4530595297d8, type: 3}
   range: 20
   maxHits: 3
   damage: 20
   recoil: 2
-  speedMult: 5
+  speedMult: 10
   spriteRotation: 45
 --- !u!212 &-3306508054851899532
 SpriteRenderer:
@@ -99,7 +99,7 @@ SpriteRenderer:
   m_SortingLayerID: -1292410309
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2686692645927855264, guid: 22f9ee3ffc2214a148be1bc567b39415, type: 3}
+  m_Sprite: {fileID: 1860037726, guid: 4c774015f423d464f9ec4530595297d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

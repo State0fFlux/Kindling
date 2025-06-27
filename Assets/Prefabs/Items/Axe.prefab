@@ -44,11 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b27559450d6420eaa1947d5feca339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 10
+  count: 1
+  icon: {fileID: 1907367056, guid: dec8f78b9914d49d394e29d5621edfc5, type: 3}
   range: 1
   maxHits: 1
   damage: 10
-  count: 1
   recoil: 2
-  indestructible: 1
-  icon: {fileID: -196523602, guid: f1af18d14290f46a5bb970a4aa94c7f3, type: 3}
+  staminaCost: 0
