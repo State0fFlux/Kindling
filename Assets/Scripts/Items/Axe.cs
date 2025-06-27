@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class Axe : Item
+public class Axe : Melee
 {
-    protected override void OnUse(bool facingRight, Transform parent)
-    {
-        Vector2 direction = facingRight ? Vector2.right : Vector2.left;
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(parent.position, direction, range, LayerMask.GetMask("Enemy"));
+    public override void Use(Vector2 aimInput, Transform parent)
+    {
+        Vector2 aimDirection = GetAimDirection(aimInput);
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(parent.position, aimDirection, range, LayerMask.GetMask("Enemy"));
         print(hits);
         int hitCount = 0;
 
@@ -26,6 +27,11 @@ public class Axe : Item
             }
         }
 
-        Debug.DrawRay(parent.position, direction * range, Color.red, 0.3f); // debug line
+        Debug.DrawRay(parent.position, aimDirection * range, Color.red, 5f); // debug line
+    }
+
+    public override Vector2 GetAimDirection(Vector2 aimInput)
+    {
+        return new Vector2(aimInput.x, 0);
     }
 }

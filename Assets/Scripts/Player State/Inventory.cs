@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
         SetEquipped(true);
     }
 
-    public void Use()
+    public void UpdateAfterUse()
     {
         Item item = items[selectedIndex];
         if (item.GetCount() <= 0)

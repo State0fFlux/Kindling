@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 302998520480191720}
+  - component: {fileID: 7744812824053924148}
   - component: {fileID: -3306508054851899532}
   - component: {fileID: -7149082388614937864}
   - component: {fileID: 6826418732307887387}
-  - component: {fileID: 7744812824053924148}
   - component: {fileID: 6226667979463471320}
   m_Layer: 8
   m_Name: Fireball
@@ -37,6 +37,25 @@ Transform:
   - {fileID: 8784949360382397474}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7744812824053924148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4813969748930390085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcab40d11b9454380a9cdd9b2a00d50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  count: 100
+  icon: {fileID: -3915765450054648673, guid: c19f5d9faaa084424851aece5419cd0f, type: 3}
+  range: 20
+  maxHits: 1
+  damage: 100
+  recoil: 10
+  speedMult: 3
 --- !u!212 &-3306508054851899532
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -153,29 +172,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.25}
-  m_Radius: 0.3
---- !u!114 &7744812824053924148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4813969748930390085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcab40d11b9454380a9cdd9b2a00d50c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 0
-  range: 20
-  maxHits: 1
-  damage: 100
-  count: 50
-  indestructible: 0
-  icon: {fileID: -3915765450054648673, guid: c19f5d9faaa084424851aece5419cd0f, type: 3}
-  speedMult: 3
-  facingRight: 1
+  m_Offset: {x: 0, y: -0.35}
+  m_Radius: 0.18631756
 --- !u!95 &6226667979463471320
 Animator:
   serializedVersion: 7

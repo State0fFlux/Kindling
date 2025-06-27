@@ -72,6 +72,8 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 50
   currStat: 0
+  hurtColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.25
 --- !u!114 &2960353155086253449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 2022755337554948150, guid: 0d71ead194a274027a00757c6fe68342, type: 3}
-  - {fileID: 5395254999307618287, guid: caf65bb8736fd4760b29049340bf91dd, type: 3}
+  - {fileID: 7744812824053924148, guid: d81243434c59d47f6b9d82bc10fbe939, type: 3}
 --- !u!50 &348563804956860879
 Rigidbody2D:
   serializedVersion: 5
@@ -152,7 +154,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 31c96badc101b4e05a8841c59a2ac10a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,8 +270,8 @@ Transform:
   m_GameObject: {fileID: 7157995094276310091}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3762732346357426178}

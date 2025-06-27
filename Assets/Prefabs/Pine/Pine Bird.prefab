@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMult: 1
-  dropCount: 1
+  dropCount: 2
   seed: {fileID: 6329168618178656987, guid: 2c104d8f798ee46bb931c9eae87b91d9, type: 3}
 --- !u!114 &2583834177616178704
 MonoBehaviour:
@@ -67,6 +67,8 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 30
   currStat: 0
+  hurtColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.25
 --- !u!212 &6479681021247000405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -90,7 +92,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 31c96badc101b4e05a8841c59a2ac10a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

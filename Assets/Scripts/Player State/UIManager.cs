@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
             {
                 image.color = unselectedTint;
             }
-            text.text = (inventory[i] && !inventory[i].IsIndestructible()) ? inventory[i].GetCount().ToString() : "";
+            text.text = (inventory[i] && !(inventory[i] is Melee)) ? inventory[i].GetCount().ToString() : "";
         }
     }
 }

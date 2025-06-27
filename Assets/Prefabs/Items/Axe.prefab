@@ -49,5 +49,6 @@ MonoBehaviour:
   maxHits: 1
   damage: 10
   count: 1
+  recoil: 2
   indestructible: 1
   icon: {fileID: -196523602, guid: f1af18d14290f46a5bb970a4aa94c7f3, type: 3}

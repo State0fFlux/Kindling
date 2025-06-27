@@ -22,7 +22,7 @@ public abstract class Stat : MonoBehaviour
         if (statBar != null) UIManager.Instance.UpdateStat(statBar, currStat, maxStat);
     }
 
-    public void Hurt(float damage)
+    public virtual void Hurt(float damage)
     {
         if (damage < 0f) throw new System.Exception("Damage amount must be positive");
         currStat -= damage;
