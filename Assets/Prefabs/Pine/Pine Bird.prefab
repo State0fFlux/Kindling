@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3109577602400323497}
   - component: {fileID: 6177933777157320543}
+  - component: {fileID: 2583834177616178704}
   - component: {fileID: 6479681021247000405}
   - component: {fileID: 6634373736162628896}
   - component: {fileID: 622302193492313563}
@@ -51,6 +52,21 @@ MonoBehaviour:
   speedMult: 1
   dropCount: 1
   seed: {fileID: 6329168618178656987, guid: 2c104d8f798ee46bb931c9eae87b91d9, type: 3}
+--- !u!114 &2583834177616178704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6779175396243794579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba103a58af004712ad2e18386b73663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statBar: {fileID: 0}
+  maxStat: 30
+  currStat: 0
 --- !u!212 &6479681021247000405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -94,7 +110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1292410309
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5402810748506560962, guid: 42079924f38eb424bbc1541a6cdfa48b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

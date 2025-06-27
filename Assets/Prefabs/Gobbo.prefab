@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3762732346357426178}
   - component: {fileID: 4800080103384276672}
+  - component: {fileID: 5783504606449855854}
+  - component: {fileID: 2960353155086253449}
+  - component: {fileID: 4828838827790189127}
   - component: {fileID: 348563804956860879}
   - component: {fileID: 4057156729182975643}
   - component: {fileID: 2282852723968312598}
@@ -33,7 +36,8 @@ Transform:
   m_LocalPosition: {x: -0.75, y: 1.33, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 5392221137999063529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4800080103384276672
@@ -48,13 +52,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b77111823ac471d87c33d8cc0ab755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBar: {fileID: 0}
-  currHP: 100
-  maxHP: 100
-  speedMult: 2
-  fireballs: 20
-  actionCooldown: 0.5
-  fireball: {fileID: 4813969748930390085, guid: d81243434c59d47f6b9d82bc10fbe939, type: 3}
+  speedMult: 1
+  centerOfBody: {fileID: 5392221137999063529}
+  staminaRegenRate: 5
+  sprintCost: 30
+  cycleCooldown: 0.2
+--- !u!114 &5783504606449855854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808278801854186005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba103a58af004712ad2e18386b73663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statBar: {fileID: 0}
+  maxStat: 50
+  currStat: 0
+--- !u!114 &2960353155086253449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808278801854186005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac7b64cd7ef1438db65c8399c02c1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statBar: {fileID: 0}
+  maxStat: 100
+  currStat: 0
+--- !u!114 &4828838827790189127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808278801854186005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca3799debb5e24458a53d232fefb25ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 2022755337554948150, guid: 0d71ead194a274027a00757c6fe68342, type: 3}
+  - {fileID: 5395254999307618287, guid: caf65bb8736fd4760b29049340bf91dd, type: 3}
 --- !u!50 &348563804956860879
 Rigidbody2D:
   serializedVersion: 5
@@ -196,3 +243,34 @@ CapsuleCollider2D:
   m_Offset: {x: 0.030593991, y: 0.4755249}
   m_Size: {x: 0.46438432, y: 0.9510498}
   m_Direction: 0
+--- !u!1 &7157995094276310091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5392221137999063529}
+  m_Layer: 7
+  m_Name: CenterOfBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5392221137999063529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157995094276310091}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3762732346357426178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

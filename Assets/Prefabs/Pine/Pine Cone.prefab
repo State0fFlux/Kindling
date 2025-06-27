@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3910986109293789375}
   - component: {fileID: 7810755881935902405}
+  - component: {fileID: 7524358636879854731}
   - component: {fileID: 5967625478149473554}
   - component: {fileID: 3115999071138157684}
   - component: {fileID: -8442118230518048358}
@@ -53,6 +54,21 @@ MonoBehaviour:
   damage: 25
   tree: {fileID: 4820559907008517418, guid: e6f51039f5dd94633a2847a242d7d803, type: 3}
   furny: {fileID: 0}
+--- !u!114 &7524358636879854731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6329168618178656987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba103a58af004712ad2e18386b73663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statBar: {fileID: 0}
+  maxStat: 30
+  currStat: 0
 --- !u!50 &5967625478149473554
 Rigidbody2D:
   serializedVersion: 5

@@ -6,22 +6,25 @@ public class Gobbo : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private float speedMult = 1f;
-    [SerializeField] private int startingFireballs = 3; // initial number of fireballs;
+    [SerializeField] private Transform centerOfBody;
 
     [Header("Stamina Settings")]
     [SerializeField] private float staminaRegenRate; // rate at which stamina regenerates
     [SerializeField] private float sprintCost;
-    [SerializeField] private float swingCost;
+
+    [Header("UI Settings")]
+    [SerializeField] private float cycleCooldown; // reference to the health bar UI element
 
     // Stats
     private bool immobilized = false;
+    private bool facingRight = true;
     private bool sprinting = false;
+    private float cycleCounter = 0;
 
     // Components
     private Health health;
     private Stamina stamina;
     private Inventory inventory;
-
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -42,6 +45,7 @@ public class Gobbo : MonoBehaviour
     {
         health.Regen(0.25f); // Heal slowly over time
 
+        print(immobilized);
         if (immobilized) // prevent any actions while immobilized
         {
             return;
@@ -53,28 +57,47 @@ public class Gobbo : MonoBehaviour
             Item item = inventory.GetEquipped();
             if (item != null && stamina.GetStat() >= item.GetCost())
             {
-                item.Use();
+                item.Use(facingRight, centerOfBody);
+                immobilized = true;
+                animator.speed = 1f; // Reset animator speed
+                animator.SetTrigger(item.name);
+                stamina.Hurt(item.GetCost());
+                inventory.Use();
             }
         }
         else
         {
             float cycle = Input.GetAxisRaw("Cycle Inventory");
             float equip = Input.GetAxisRaw("Equip");
-            if (cycle > 0)
+            if (cycle == 0)
             {
-                inventory.CycleRight();
+                cycleCounter = 0;
             }
-            else if (cycle < 0)
+            if (cycleCounter <= 0f)
             {
-                inventory.CycleLeft();
+                if (cycle > 0)
+                {
+                    cycleCounter = cycleCooldown; // Reset cycle counter
+                    inventory.CycleRight();
+                }
+                else if (cycle < 0)
+                {
+                    cycleCounter = cycleCooldown; // Reset cycle counter
+                    inventory.CycleLeft();
+                }
             }
-            else if (equip > 0 && inventory.GetEquipped() == null)
+
+            if (equip != 0 && inventory.GetSelected() != null)
             {
-                inventory.SetEquipped(true);
-            } else if (equip < 0 && inventory.GetEquipped() != null) {
-                inventory.SetEquipped(false);
+                if (equip > 0 && inventory.GetEquipped() == null)
+                {
+                    inventory.SetEquipped(true);
+                }
+                else if (equip < 0 && inventory.GetEquipped() != null)
+                {
+                    inventory.SetEquipped(false);
+                }
             }
-            
         }
 
         if (Input.GetButtonDown("Sprint") && stamina.GetStat() > 0f && !sprinting)
@@ -98,6 +121,8 @@ public class Gobbo : MonoBehaviour
         {
             stamina.Regen(staminaRegenRate);
         }
+
+        cycleCounter = cycleCounter - Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -113,12 +138,13 @@ public class Gobbo : MonoBehaviour
 
         if (moveX < 0)
         {
-            spriteRenderer.flipX = true;
+            facingRight = false;
         }
         else if (moveX > 0)
         {
-            spriteRenderer.flipX = false;
+            facingRight = true;
         }
+        spriteRenderer.flipX = !facingRight;
 
         if (moveX == 0 && Random.value <= 0.01f)
         { // randomly sneeze 1% of time when idle
@@ -126,26 +152,6 @@ public class Gobbo : MonoBehaviour
         }
 
         rb.linearVelocityX = moveX * Global.speed * speedMult;
-    }
-
-    void Shoot()
-    {
-        animator.speed = 1f; // Reset animator speed
-        inventory[fireball]--;
-        UIManager.Instance.UpdateInventory(inventory); // Update inventory UI
-        lastAction = 0f;
-        immobilized = true;
-        animator.SetTrigger("Shoot");
-        Instantiate(fireball, transform.position, Quaternion.identity);
-    }
-
-    void Swing()
-    {
-        animator.speed = 1f; // Reset animator speed
-        lastAction = 0f;
-        immobilized = true;
-        animator.SetTrigger("Swing");
-        stamina.Hurt(swingCost);
     }
 
     public void OnActionComplete()

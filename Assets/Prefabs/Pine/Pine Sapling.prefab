@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1226928586612305607}
   - component: {fileID: 9038599313774724709}
+  - component: {fileID: 3646042040417829905}
   - component: {fileID: 6949147807012823569}
   - component: {fileID: 4099470358339389848}
+  - component: {fileID: 4199361753081856722}
   m_Layer: 6
   m_Name: Pine Sapling
   m_TagString: Untagged
@@ -46,9 +48,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa46e770557f54c4181775e6ddc101a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: 0.05
+  growthRate: 0.25
   growth: 0
   hive: {fileID: 6270356947817481618, guid: df06afbf556ec431f8443e74a0201906, type: 3}
+--- !u!114 &3646042040417829905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820559907008517418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba103a58af004712ad2e18386b73663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statBar: {fileID: 0}
+  maxStat: 30
+  currStat: 30
 --- !u!212 &6949147807012823569
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -92,7 +109,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1292410309
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: -6783900630120892731, guid: e3fcbb5ab74b04e3cbbac37c5bc41cfd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -126,3 +143,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &4199361753081856722
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820559907008517418}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 2}
+  m_Size: {x: 0.5, y: 4}
+  m_Direction: 0

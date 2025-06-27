@@ -12,25 +12,29 @@ public class Sapling : MonoBehaviour
     // Components
     private Animator animator;
     private SpriteRenderer sr;
+    private Health health;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
-        sr.sortingOrder = Random.value > 0.5f ? 1 : -1; // Randomly set sorting order for visual variety
+        health = GetComponent<Health>();
+
+        //sr.sortingOrder = Random.value > 0.5f ? 1 : -1; // Randomly set sorting order for visual variety
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (growth < 1f)
-        {
-            growth += Time.deltaTime * growthRate; // Increase growth over time
-        }
+        if (health.GetStat() <= 0f) Die();
+            if (growth < 1f)
+            {
+                growth += Time.deltaTime * growthRate; // Increase growth over time
+            }
         if (growth >= 1f)
         {
-            hive.GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder; // Match hive sorting order
+            //hive.GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder; // Match hive sorting order
             Instantiate(hive, transform.position, Quaternion.identity); // Spawn hive when fully grown
             Destroy(gameObject); // Destroy the sapling when fully grown
         }
@@ -39,5 +43,10 @@ public class Sapling : MonoBehaviour
     void FixedUpdate()
     {
         animator.SetFloat("Growth", growth); // Update animator with current growth
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }
