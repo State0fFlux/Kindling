@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
         slider.value = currStat; // adjust current health bar fill
     }
 
-    public void InitializeInventory(Item[] inventory, int selectedIndex, bool equipped, int slots)
+    public void InitializeInventory(ItemStack[] items, int selectedIndex, bool equipped, int slots)
     {
         tileBox.GetComponent<RectTransform>().sizeDelta = new Vector2(padding + slots * (padding + tile.GetComponent<RectTransform>().sizeDelta.x), 2 * padding + tile.GetComponent<RectTransform>().sizeDelta.y);
         tiles = new GameObject[slots];
@@ -55,16 +55,16 @@ public class UIManager : MonoBehaviour
             tiles[i] = Instantiate(tile, tileBox.transform);
         }
 
-        UpdateInventory(inventory, selectedIndex, equipped);
+        UpdateInventory(items, selectedIndex, equipped);
     }
 
-    public void UpdateInventory(Item[] inventory, int selectedIndex, bool equipped)
+    public void UpdateInventory(ItemStack[] inventory, int selectedIndex, bool equipped)
     {
         for (int i = 0; i < inventory.Length; i++)
         {
             Image icon = tiles[i].transform.GetChild(0).GetComponent<Image>();
             TextMeshProUGUI text = tiles[i].GetComponentInChildren<TextMeshProUGUI>();
-            icon.sprite = inventory[i] ? inventory[i].GetIcon() : emptyIcon;
+            icon.sprite = inventory[i] != null ? inventory[i].GetItem().GetIcon() : emptyIcon;
             if (selectedIndex == i)
             {
                 if (equipped)
@@ -80,7 +80,7 @@ public class UIManager : MonoBehaviour
             {
                 icon.color = unselectedTint;
             }
-            text.text = (inventory[i] && !(inventory[i] is Melee)) ? inventory[i].GetCount().ToString() : "";
+            text.text = (inventory[i] != null && inventory[i].GetItem() is not Melee && inventory[i].GetItem() is not Basket) ? inventory[i].GetCount().ToString() : "";
         }
     }
 }

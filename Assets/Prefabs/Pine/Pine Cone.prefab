@@ -49,9 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af22a2a857b204f5da5a89761531ab05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMult: 2
-  damage: 25
-  tree: {fileID: 4820559907008517418, guid: e6f51039f5dd94633a2847a242d7d803, type: 3}
+  icon: {fileID: 1260916058, guid: 2c19cc8c428ac413982a776d1ee4ee08, type: 3}
 --- !u!114 &7524358636879854731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,8 +65,6 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 1
   currStat: 1
-  hurtColor: {r: 1, g: 1, b: 1, a: 1}
-  flashDuration: 0.25
 --- !u!50 &5967625478149473554
 Rigidbody2D:
   serializedVersion: 5
@@ -77,14 +73,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6329168618178656987}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 0.25
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -119,7 +115,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 31c96badc101b4e05a8841c59a2ac10a, type: 3}
+  - {fileID: 2100000, guid: 9145231500fe948d488f34f1ff199bc0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

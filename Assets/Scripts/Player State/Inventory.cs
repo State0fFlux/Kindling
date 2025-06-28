@@ -1,25 +1,40 @@
-using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private Item[] items; // array to hold items in the inventory
+
+    public static Inventory Instance { get; private set; } // Singleton pattern
+
     [SerializeField] private int slots;
-    
+    [SerializeField] private Item[] initialItems;
+    [SerializeField] private int[] initialCounts;
+
     // Stats
     private bool equipped = false;
     private int selectedIndex = 0;
+        private ItemStack[] items; // array to hold items in the inventory
+
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
-        Item[] initialItems = items; // initialize with empty items
-        items = new Item[slots]; // initialize the inventory with the specified number of slots
+        items = new ItemStack[slots]; // initialize the inventory with the specified number of slots
 
         for (int i = 0; i < slots; i++)
         {
+            print(i);
             if (i < initialItems.Length)
             {
-                items[i] = initialItems[i]; // fill the inventory with initial items
+                items[i] = new ItemStack(initialItems[i], initialCounts[i]); // fill the inventory with initial items
             }
             else
             {
@@ -34,14 +49,14 @@ public class Inventory : MonoBehaviour
     {
         if (equipped)
         {
-            return items[selectedIndex];
+            return items[selectedIndex].GetItem();
         }
         return null;
     }
 
     public Item GetSelected()
     {
-        return items[selectedIndex];
+        return items[selectedIndex].GetItem();
     }
 
     public void SetEquipped(bool equipped)
@@ -70,14 +85,46 @@ public class Inventory : MonoBehaviour
         SetEquipped(true);
     }
 
-    public void UpdateAfterUse()
+    public void Add(Item item)
     {
-        Item item = items[selectedIndex];
-        if (item.GetCount() <= 0)
+        // try to add to existing stack
+        foreach (ItemStack stack in items)
         {
-            items[selectedIndex] = null;
-            SetEquipped(false);
+            if (stack != null && stack.GetItem().Equals(item))
+            {
+                stack.Add();
+                UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+                return;
+            }
         }
-        UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+
+        // no existing stack found, create a new one
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] == null)
+            {
+                items[i] = new ItemStack(item);
+                UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+                return;
+            }
+        }
+    }
+
+    public void Remove(Item item)
+    {
+        foreach (ItemStack stack in items)
+        {
+            if (stack != null && stack.GetItem().Equals(item))
+            {
+                stack.Remove();
+                if (items[selectedIndex].GetCount() <= 0)
+                {
+                    items[selectedIndex] = null;
+                    SetEquipped(false);
+                }
+                UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+                return;
+            }
+        }
     }
 }

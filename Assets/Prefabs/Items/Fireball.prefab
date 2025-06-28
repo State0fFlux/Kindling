@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7149082388614937864}
   - component: {fileID: 6826418732307887387}
   - component: {fileID: 6226667979463471320}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcab40d11b9454380a9cdd9b2a00d50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 99
   icon: {fileID: -3915765450054648673, guid: c19f5d9faaa084424851aece5419cd0f, type: 3}
   range: 20
   maxHits: 1
@@ -207,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8784949360382397474}
   - component: {fileID: 1871868002422725651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,7 +8,7 @@ public abstract class Stat : MonoBehaviour
     [SerializeField] private float currStat; // Current stat points
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         if (statBar != null) UIManager.Instance.UpdateStat(statBar, currStat, maxStat); // Initialize HP in UI
     }
@@ -32,17 +32,13 @@ public abstract class Stat : MonoBehaviour
     public void Regen(float rate)
     {
         if (rate < 0f) throw new System.Exception("Regen rate must be positive");
-        currStat += rate * Time.deltaTime; // Regenerate stat over time
-        if (currStat > maxStat) currStat = maxStat; // Cap HP at maximum value
-        if (statBar != null) UIManager.Instance.UpdateStat(statBar, currStat, maxStat);
+        Heal(rate * Time.deltaTime);
     }
 
     public void Decay(float rate)
     {
         if (rate < 0f) throw new System.Exception("Decay rate must be positive");
-        currStat -= rate * Time.deltaTime; // Decay stat over time
-        if (currStat < 0f) currStat = 0f; // Prevent negative HP
-        if (statBar != null) UIManager.Instance.UpdateStat(statBar, currStat, maxStat);
+        Hurt(rate * Time.deltaTime);
     }
 
     public float GetStat()

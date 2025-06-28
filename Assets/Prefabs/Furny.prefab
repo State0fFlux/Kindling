@@ -125,9 +125,10 @@ GameObject:
   - component: {fileID: 748006808598911605}
   - component: {fileID: 2615926730419012074}
   - component: {fileID: 8579400494645012138}
+  - component: {fileID: 7188856249313023079}
   m_Layer: 7
   m_Name: Furny
-  m_TagString: Hero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flickerAmplitude: 0.1
-  flickerFrequency: 1
+  flickerFrequency: 0.2
 --- !u!114 &748006808598911605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,8 +178,6 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 100
   currStat: 100
-  hurtColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 0.5
 --- !u!212 &2615926730419012074
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -202,7 +201,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 31c96badc101b4e05a8841c59a2ac10a, type: 3}
+  - {fileID: 2100000, guid: 9145231500fe948d488f34f1ff199bc0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -223,7 +222,7 @@ SpriteRenderer:
   m_SortingLayerID: 2070530241
   m_SortingLayer: 1
   m_SortingOrder: -1
-  m_Sprite: {fileID: -969055501864709534, guid: 420a916606f24402db6d5509b9630936, type: 3}
+  m_Sprite: {fileID: 2279794662231652813, guid: b8d3abb93522a49798b700f5b1076ea2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -268,6 +267,28 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.98723924}
-  m_Size: {x: 1.0707345, y: 1.621867}
+  m_Offset: {x: 0, y: 0.5}
+  m_Size: {x: 0.6357832, y: 1.0139924}
   m_Direction: 0
+--- !u!95 &7188856249313023079
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336699660675938762}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c9ae99970c31d4d1e97a156809ea9f67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

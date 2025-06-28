@@ -14,6 +14,10 @@ public class Gobbo : MonoBehaviour
     [Header("UI Settings")]
     [SerializeField] private float cycleCooldown; // reference to the health bar UI element
 
+    [Header("Game Objects")]
+    [SerializeField] private GameObject basket; // this has the trigger collider
+
+
     // Stats
     private bool immobilized = false;
     private bool facingRight = true;
@@ -26,7 +30,6 @@ public class Gobbo : MonoBehaviour
     // Components
     private Health health;
     private Stamina stamina;
-    private Inventory inventory;
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -37,7 +40,6 @@ public class Gobbo : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        inventory = GetComponent<Inventory>();
         health = GetComponent<Health>();
         stamina = GetComponent<Stamina>();
     }
@@ -46,6 +48,23 @@ public class Gobbo : MonoBehaviour
     void Update()
     {
         health.Regen(0.25f); // Heal slowly over time
+
+        currItem = Inventory.Instance.GetEquipped();
+
+        // Handle hold actions
+        if (currItem is Basket)
+        {
+            if (Input.GetButton("Use"))
+            {
+                immobilized = true;
+                basket.SetActive(true);
+            }
+            else
+            {
+                immobilized = false;
+                basket.SetActive(false);
+            }
+        }
 
         if (immobilized) // prevent any actions while immobilized
         {
@@ -67,30 +86,25 @@ public class Gobbo : MonoBehaviour
         }
         spriteRenderer.flipX = !facingRight;
 
-        /*
-        if (moveX == 0 && Random.value <= 0.01f)
-        { // randomly sneeze 1% of time when idle
-            animator.SetTrigger("Sneeze");
-        }*/
-
         if (Input.GetButtonDown("Use"))
         {
-            aimInput = new Vector2(facingRight ? 1 : -1, Input.GetAxisRaw("Aim"));
-            if (aimInput.y < 0) aimInput.y = 0; // Temporary fix, prevent downward aim
-            currItem = inventory.GetEquipped();
-            if (currItem != null && (!(currItem is Melee) || stamina.GetStat() >= ((Melee)currItem).GetStaminaCost()))
-            {
-                rb.linearVelocityX = 0;
-                immobilized = true;
-                animator.speed = 1f; // Reset animator speed
+            if (currItem is Weapon) {
+                aimInput = new Vector2(facingRight ? 1 : -1, Input.GetAxisRaw("Aim"));
+                if (aimInput.y < 0) aimInput.y = 0; // Temporary fix, prevent downward aim
+                if (currItem is Ranged || stamina.GetStat() >= ((Melee)currItem).GetStaminaCost()) // can afford to use weapon
+                {
+                    rb.linearVelocityX = 0;
+                    immobilized = true;
+                    animator.speed = 1f; // Reset animator speed
 
-                if (currItem is LinearProjectile)
-                {
-                    animator.SetTrigger("Shoot");
-                }
-                else // Melee
-                {
-                    animator.SetTrigger(currItem.name); // includes a call to Use
+                    if (currItem is LinearProjectile)
+                    {
+                        animator.SetTrigger("Shoot");
+                    }
+                    else // Melee
+                    {
+                        animator.SetTrigger(currItem.name); // includes a call to Use
+                    }
                 }
             }
         }
@@ -107,24 +121,24 @@ public class Gobbo : MonoBehaviour
                 if (cycle > 0)
                 {
                     cycleCounter = cycleCooldown; // Reset cycle counter
-                    inventory.CycleRight();
+                    Inventory.Instance.CycleRight();
                 }
                 else if (cycle < 0)
                 {
                     cycleCounter = cycleCooldown; // Reset cycle counter
-                    inventory.CycleLeft();
+                    Inventory.Instance.CycleLeft();
                 }
             }
 
-            if (equip != 0 && inventory.GetSelected() != null)
+            if (equip != 0 && Inventory.Instance.GetSelected() != null)
             {
-                if (equip > 0 && inventory.GetEquipped() == null)
+                if (equip > 0 && Inventory.Instance.GetEquipped() == null)
                 {
-                    inventory.SetEquipped(true);
+                    Inventory.Instance.SetEquipped(true);
                 }
-                else if (equip < 0 && inventory.GetEquipped() != null)
+                else if (equip < 0 && Inventory.Instance.GetEquipped() != null)
                 {
-                    inventory.SetEquipped(false);
+                    Inventory.Instance.SetEquipped(false);
                 }
             }
         }
@@ -169,15 +183,14 @@ public class Gobbo : MonoBehaviour
 
     public void OnItemUsed()
     {
-        currItem = inventory.GetEquipped();
-        if (currItem is Weapon) rb.AddForce(-currItem.GetAimDirection(aimInput) * ((Weapon)currItem).GetRecoil(), ForceMode2D.Impulse);
-        currItem.Use(aimInput, centerOfBody);
+        currItem = Inventory.Instance.GetEquipped();
+        if (currItem is Weapon) rb.AddForce(-((Weapon)currItem).GetAimDirection(aimInput) * ((Weapon)currItem).GetRecoil(), ForceMode2D.Impulse);
+        ((Weapon)currItem).Use(aimInput, centerOfBody);
         if (currItem is Melee) stamina.Hurt(((Melee)currItem).GetStaminaCost());
-        inventory.UpdateAfterUse();
     }
-    
-    public void OnDeath()
+
+    public void TrySneeze()
     {
-        Destroy(gameObject);
+        if (Random.value <= 0.4f) animator.SetTrigger("Sneeze");
     }
 }

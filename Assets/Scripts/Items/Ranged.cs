@@ -29,10 +29,15 @@ public abstract class Ranged : Weapon
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Dome")) Destroy(gameObject);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Goodwall")) Destroy(gameObject);
 
         other.transform.GetComponent<Health>()?.Hurt(damage);
         currHits++;
         if (currHits == maxHits) Destroy(gameObject); // Destroy the fireball
+    }
+
+    public override void Use(Vector2 aimInput, Transform parent)
+    {
+        
     }
 }

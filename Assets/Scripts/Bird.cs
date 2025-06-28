@@ -8,7 +8,7 @@ public class Bird : MonoBehaviour
     [SerializeField] private int dropCount = 2; // number of seeds to drop
 
     [Header("Game Objects")]
-    [SerializeField] private GameObject seed;
+    [SerializeField] private GameObject fuel;
 
     // Stats
     private float[] dropPoints;
@@ -83,15 +83,10 @@ public class Bird : MonoBehaviour
         {
             if (!hasDropped[i] && Mathf.Abs(transform.position.x - dropPoints[i]) < 0.1f)
             {
-                Instantiate(seed, transform.position, Quaternion.identity);
+                Instantiate(fuel, transform.position, Quaternion.identity);
                 hasDropped[i] = true;
                 return; // Only drop one seed per update
             }
         }
-    }
-
-    public void OnDeath()
-    {
-        Destroy(gameObject);
     }
 }

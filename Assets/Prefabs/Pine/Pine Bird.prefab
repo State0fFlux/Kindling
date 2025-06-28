@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMult: 1
   dropCount: 2
-  seed: {fileID: 6329168618178656987, guid: 2c104d8f798ee46bb931c9eae87b91d9, type: 3}
+  fuel: {fileID: 6329168618178656987, guid: 2c104d8f798ee46bb931c9eae87b91d9, type: 3}
 --- !u!114 &2583834177616178704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,8 +67,6 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 30
   currStat: 30
-  hurtColor: {r: 1, g: 1, b: 1, a: 1}
-  flashDuration: 0.25
 --- !u!212 &6479681021247000405
 SpriteRenderer:
   m_ObjectHideFlags: 0

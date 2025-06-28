@@ -6,7 +6,7 @@ public class LinearProjectile : Ranged
 
     public override void Use(Vector2 aimInput, Transform parent)
     {
-        Remove();
+        Inventory.Instance.Remove(this);
         GameObject clone = Instantiate(gameObject, parent.position, Quaternion.identity);
         Rigidbody2D cloneRb = clone.GetComponent<Rigidbody2D>();
         cloneRb.linearVelocity = GetAimDirection(aimInput);
