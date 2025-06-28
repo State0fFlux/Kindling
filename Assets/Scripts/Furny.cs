@@ -57,4 +57,9 @@ public class Furny : MonoBehaviour
             }
         }
     }
+
+    public void OnDeath()
+    {
+        Destroy(gameObject);
+    }
 }

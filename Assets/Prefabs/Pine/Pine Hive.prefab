@@ -96,9 +96,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3962424004742176632}
+  - component: {fileID: -5390161274860733717}
   - component: {fileID: -3585250624483052471}
   - component: {fileID: 3519271965827294019}
   - component: {fileID: 4763673860179200202}
+  - component: {fileID: 3679360753916106338}
   m_Layer: 6
   m_Name: Pine Hive
   m_TagString: Land Enemy
@@ -122,6 +124,18 @@ Transform:
   - {fileID: 1894309694481845758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5390161274860733717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270356947817481618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1b070deeb594d1aac0af5ed4e213a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-3585250624483052471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statBar: {fileID: 0}
-  maxStat: 30
-  currStat: 0
+  maxStat: 50
+  currStat: 50
   hurtColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.25
 --- !u!212 &3519271965827294019
@@ -231,3 +245,25 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 2}
   m_Size: {x: 0.5, y: 4}
   m_Direction: 0
+--- !u!95 &3679360753916106338
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270356947817481618}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b00dfa6f7fec4412e8955d275725c90f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

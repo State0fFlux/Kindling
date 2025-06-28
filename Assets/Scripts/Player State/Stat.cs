@@ -10,7 +10,6 @@ public abstract class Stat : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currStat = maxStat; // Initialize current stat to maximum
         if (statBar != null) UIManager.Instance.UpdateStat(statBar, currStat, maxStat); // Initialize HP in UI
     }
 
@@ -56,8 +55,20 @@ public abstract class Stat : MonoBehaviour
         return maxStat;
     }
 
+    public float GetRatio()
+    {
+        return currStat / maxStat;
+    }
+
     public void SetMax(float maxStat)
     {
         this.maxStat = maxStat;
+        if (statBar != null) UIManager.Instance.UpdateStat(statBar, currStat, maxStat);
+    }
+
+    public void SetStatAsRatio(float percentage)
+    {
+        currStat = percentage * maxStat;
+        if (statBar != null) UIManager.Instance.UpdateStat(statBar, currStat, maxStat);
     }
 }

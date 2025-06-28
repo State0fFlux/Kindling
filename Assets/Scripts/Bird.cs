@@ -43,7 +43,7 @@ public class Bird : MonoBehaviour
             dropPoints[0] = Global.FurnyX; // First drop on Furny
             hasDropped[0] = false;
         }
-        for (int i = droppingOnFurny? 1: 0; i < dropCount; i++)
+        for (int i = droppingOnFurny ? 1 : 0; i < dropCount; i++)
         {
             float roll = UnityEngine.Random.value;
             if (roll < 0.7) // 50% chance to drop on left side
@@ -88,5 +88,10 @@ public class Bird : MonoBehaviour
                 return; // Only drop one seed per update
             }
         }
+    }
+
+    public void OnDeath()
+    {
+        Destroy(gameObject);
     }
 }

@@ -1,37 +1,16 @@
 fileFormatVersion: 2
-guid: 2c19cc8c428ac413982a776d1ee4ee08
+guid: 420a916606f24402db6d5509b9630936
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2872345927751193353
-    second: Pinecone 1_0
+      213: -969055501864709534
+    second: Furny2_0
   - first:
-      213: -3171521593263930710
-    second: Pinecone 1_1
+      213: 5075832867262744394
+    second: Furny2_1
   - first:
-      213: 3200137888912553556
-    second: Pinecone 1_2
-  - first:
-      213: -6299791942887454715
-    second: Pinecone 1_3
-  - first:
-      213: -4219950070949538973
-    second: Pinecone 1_4
-  - first:
-      213: -5844823786235185922
-    second: Pinecone 1_5
-  - first:
-      213: -3123633587761566423
-    second: Pinecone 1_6
-  - first:
-      213: -696626106796556729
-    second: Pinecone 1_7
-  - first:
-      213: -8121330038476888012
-    second: Pinecone 1_8
-  - first:
-      213: -1051189187147182411
-    second: Pinecone 1_9
+      213: -8557274140118234694
+    second: Furny2_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -153,45 +132,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pinecone_0
+      name: Furny2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0b61461482b2f46dc84e9cf7ebf2d173
-      internalID: 1260916058
+      spriteID: 26257b3c7293d82f0800000000000000
+      internalID: -969055501864709534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pinecone_1
+      name: Furny2_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 200d03aeff884414182b97c8c3fcc4f7
-      internalID: -901126372
+      spriteID: a47c270991bf07640800000000000000
+      internalID: 5075832867262744394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furny2_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab9cd9802847e3980800000000000000
+      internalID: -8557274140118234694
       vertices: []
       indices: 
       edges: []
@@ -200,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1853b1328a7e840e491720f04d48542d
+    spriteID: 10e04489e4811427aa65afbc2a630966
     internalID: 0
     vertices: []
     indices: 
@@ -210,8 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pinecone_0: 1260916058
-      Pinecone_1: -901126372
+      Furny2_0: -969055501864709534
+      Furny2_1: 5075832867262744394
+      Furny2_2: -8557274140118234694
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

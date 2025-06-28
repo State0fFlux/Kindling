@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statBar: {fileID: 0}
   maxStat: 100
-  currStat: 0
+  currStat: 100
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.5
 --- !u!212 &2615926730419012074
@@ -223,7 +223,7 @@ SpriteRenderer:
   m_SortingLayerID: 2070530241
   m_SortingLayer: 1
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7271792063484532400, guid: b8d3abb93522a49798b700f5b1076ea2, type: 3}
+  m_Sprite: {fileID: -969055501864709534, guid: 420a916606f24402db6d5509b9630936, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -268,6 +268,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.5}
-  m_Size: {x: 0.6279387, y: 1}
+  m_Offset: {x: 0, y: 0.98723924}
+  m_Size: {x: 1.0707345, y: 1.621867}
   m_Direction: 0

@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,10 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMult: 2
-  blastRadius: 0
   damage: 25
   tree: {fileID: 4820559907008517418, guid: e6f51039f5dd94633a2847a242d7d803, type: 3}
-  furny: {fileID: 0}
 --- !u!114 &7524358636879854731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,8 +65,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statBar: {fileID: 0}
-  maxStat: 30
-  currStat: 0
+  maxStat: 1
+  currStat: 1
   hurtColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.25
 --- !u!50 &5967625478149473554
@@ -142,7 +140,7 @@ SpriteRenderer:
   m_SortingLayerID: -1292410309
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 8384142458865905078, guid: a92403e02484a4c2ba25927395a5e4f4, type: 3}
+  m_Sprite: {fileID: 1260916058, guid: 2c19cc8c428ac413982a776d1ee4ee08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,7 +186,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.6956137
+  m_Radius: 0.34557202
 --- !u!95 &-8441673531996701332
 Animator:
   serializedVersion: 7

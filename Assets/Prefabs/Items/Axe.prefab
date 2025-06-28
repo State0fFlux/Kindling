@@ -50,4 +50,4 @@ MonoBehaviour:
   maxHits: 1
   damage: 10
   recoil: 2
-  staminaCost: 0
+  staminaCost: 25

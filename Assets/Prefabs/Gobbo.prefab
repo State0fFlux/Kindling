@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statBar: {fileID: 0}
   maxStat: 50
-  currStat: 0
+  currStat: 50
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.5
 --- !u!114 &2960353155086253449
@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 2022755337554948150, guid: 0d71ead194a274027a00757c6fe68342, type: 3}
   - {fileID: 7744812824053924148, guid: d81243434c59d47f6b9d82bc10fbe939, type: 3}
   - {fileID: 7744812824053924148, guid: 2bcc944fc0ec84d6db309394213a77e3, type: 3}
+  slots: 0
 --- !u!50 &348563804956860879
 Rigidbody2D:
   serializedVersion: 5

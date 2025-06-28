@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7744812824053924148}
   - component: {fileID: -3306508054851899532}
   - component: {fileID: -7149082388614937864}
-  - component: {fileID: 6826418732307887387}
+  - component: {fileID: 8796812144446340590}
   m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcab40d11b9454380a9cdd9b2a00d50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 100
+  count: 81
   icon: {fileID: 1860037726, guid: 4c774015f423d464f9ec4530595297d8, type: 3}
   range: 20
   maxHits: 3
@@ -137,7 +137,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6826418732307887387
+--- !u!58 &8796812144446340590
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,5 +171,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.35}
-  m_Radius: 0.18631756
+  m_Offset: {x: 0.3, y: -0.3}
+  m_Radius: 0.14015302

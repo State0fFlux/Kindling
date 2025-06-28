@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcab40d11b9454380a9cdd9b2a00d50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 100
+  count: 99
   icon: {fileID: -3915765450054648673, guid: c19f5d9faaa084424851aece5419cd0f, type: 3}
   range: 20
   maxHits: 1

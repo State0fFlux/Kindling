@@ -11,7 +11,15 @@ public class Health : Stat
     {
         if (GetStat() <= 0f)
         {
-            Destroy(gameObject);
+            Animator anim = gameObject.GetComponent<Animator>();
+            if (anim != null)
+            {
+                anim.SetTrigger("Die");
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

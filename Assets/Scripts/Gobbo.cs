@@ -75,7 +75,8 @@ public class Gobbo : MonoBehaviour
 
         if (Input.GetButtonDown("Use"))
         {
-            aimInput = new Vector2(facingRight? 1: -1, Input.GetAxisRaw("Aim"));
+            aimInput = new Vector2(facingRight ? 1 : -1, Input.GetAxisRaw("Aim"));
+            if (aimInput.y < 0) aimInput.y = 0; // Temporary fix, prevent downward aim
             currItem = inventory.GetEquipped();
             if (currItem != null && (!(currItem is Melee) || stamina.GetStat() >= ((Melee)currItem).GetStaminaCost()))
             {
@@ -173,5 +174,10 @@ public class Gobbo : MonoBehaviour
         currItem.Use(aimInput, centerOfBody);
         if (currItem is Melee) stamina.Hurt(((Melee)currItem).GetStaminaCost());
         inventory.UpdateAfterUse();
+    }
+    
+    public void OnDeath()
+    {
+        Destroy(gameObject);
     }
 }
