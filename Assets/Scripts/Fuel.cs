@@ -19,12 +19,12 @@ public class Fuel : Item
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        print("collision: " + collision.collider);
-        if (collision.collider.gameObject.CompareTag("Basket"))
+        GameObject obj = collision.collider.gameObject;
+        if (obj.CompareTag("Basket"))
         { // collect pinecone
             Inventory.Instance.Add(this);
             Destroy(gameObject);
-        } else if (!collision.collider.gameObject.CompareTag("HouseWalls"))
+        } else if (obj.CompareTag("Ground"))
         {
             health.Hurt(health.GetStat()); // deplete health
         }
