@@ -3,11 +3,14 @@ guid: b8d3abb93522a49798b700f5b1076ea2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7271792063484532400
-    second: furny_0
+      213: 2279794662231652813
+    second: Furny_0
   - first:
-      213: -8008136095745236254
-    second: furny_1
+      213: -1725326354590759691
+    second: Furny_1
+  - first:
+      213: 3515007033611223229
+    second: Furny_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -27,7 +30,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -51,10 +54,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,45 +132,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: furny_0
+      name: Furny_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 710e1903f20954499b2742d6c5460121
-      internalID: 7271792063484532400
+      spriteID: dc9362b9a2573af10800000000000000
+      internalID: 2279794662231652813
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: furny_1
+      name: Furny_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a566d4ae661974c6bad67fb360b0e3e2
-      internalID: -8008136095745236254
+      spriteID: 5f48ff852d86e08e0800000000000000
+      internalID: -1725326354590759691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Furny_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db085651640d7c030800000000000000
+      internalID: 3515007033611223229
       vertices: []
       indices: 
       edges: []
@@ -176,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 25befd1980e5a4560b8bbfcfad382ee5
+    spriteID: e93201614e7754815803daf5ea3425de
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      furny_0: 7271792063484532400
-      furny_1: -8008136095745236254
+      Furny_0: 2279794662231652813
+      Furny_1: -1725326354590759691
+      Furny_2: 3515007033611223229
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

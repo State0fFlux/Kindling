@@ -11,10 +11,12 @@ public abstract class Ranged : Weapon
 
     // Components
     protected Rigidbody2D rb;
+    private Health health;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<Health>();
     }
 
     protected void Update()
@@ -27,12 +29,25 @@ public abstract class Ranged : Weapon
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Dome")) Destroy(gameObject);
+        print(collision);
+        GameObject obj = collision.collider.gameObject;
+        if (obj.layer == LayerMask.NameToLayer("Goodwall") || obj.layer == LayerMask.NameToLayer("Uglywall"))
+        {
+            Explode();
+            return;
+        }
 
-        other.transform.GetComponent<Health>()?.Hurt(damage);
+        obj.transform.GetComponent<Health>()?.Hurt(damage);
         currHits++;
-        if (currHits == maxHits) Destroy(gameObject); // Destroy the fireball
+        if (currHits == maxHits) Explode();
+    }
+
+    void Explode()
+    {
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        health.Hurt(health.GetStat()); // kill off
     }
 }
