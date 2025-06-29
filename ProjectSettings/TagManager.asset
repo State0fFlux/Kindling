@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Hero
-  - Sky Enemy
-  - Land Enemy
   - Basket
+  - Roof
+  - Ground
+  - HouseWalls
+  - Furny
   layers:
   - Default
   - TransparentFX
@@ -16,13 +17,13 @@ TagManager:
   - Water
   - UI
   - Badguy
-  - Goodguy
-  - 
-  - 
+  - Furny
+  - Gobbo
+  - Seed
   - Goodwall
   - Badwall
   - Uglywall
-  - 
+  - Goodprojectile
   - 
   - 
   - 

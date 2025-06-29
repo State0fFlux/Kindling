@@ -31,7 +31,6 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < slots; i++)
         {
-            print(i);
             if (i < initialItems.Length)
             {
                 items[i] = new ItemStack(initialItems[i], initialCounts[i]); // fill the inventory with initial items

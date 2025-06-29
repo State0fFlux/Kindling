@@ -4,15 +4,32 @@ using UnityEngine;
 public class Health : Stat
 {
     [Header("Health Settings")]
-    private float flashDuration = 0.25f;
+    [SerializeField] private Color flashColor;
+    [SerializeField] private float flashDuration = 0.25f;
+
     private Material mat;
+    private SpriteRenderer[] spriteRenderers;
 
     protected override void Start()
     {
         base.Start();
-        var renderer = GetComponent<SpriteRenderer>();
-        renderer.material = Instantiate(renderer.material);
-        mat = renderer.material;
+
+        // Get all SpriteRenderers in this GameObject and children
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        mat = Instantiate(spriteRenderers[0].material);
+
+        if (flashColor != Color.clear)
+        {
+            mat.SetColor("_FlashColor", flashColor);
+            mat.SetColor("_DissolveColor", flashColor);
+        }
+
+        // Assign the instantiated material to all SpriteRenderers
+        foreach (var sr in spriteRenderers)
+        {
+            sr.material = mat;
+        }
     }
 
     void Update()
@@ -25,7 +42,6 @@ public class Health : Stat
 
     public override void Hurt(float amount)
     {
-        //StopAllCoroutines();
         StartCoroutine(Flash()); // add visual feedback
         base.Hurt(amount); // apply normal health reduction
     }
@@ -48,7 +64,6 @@ public class Health : Stat
 
     private IEnumerator Die()
     {
-
         float timer = 0f;
 
         while (timer < flashDuration)

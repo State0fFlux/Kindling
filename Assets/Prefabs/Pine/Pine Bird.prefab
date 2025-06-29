@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1576254665081620668}
   m_Layer: 6
   m_Name: Pine Bird
-  m_TagString: Sky Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMult: 1
-  dropCount: 2
+  dropCount: 3
   fuel: {fileID: 6329168618178656987, guid: 2c104d8f798ee46bb931c9eae87b91d9, type: 3}
 --- !u!114 &2583834177616178704
 MonoBehaviour:
@@ -65,8 +65,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statBar: {fileID: 0}
-  maxStat: 30
-  currStat: 30
+  maxStat: 10
+  currStat: 10
+  flashColor: {r: 0, g: 0, b: 0, a: 0}
+  flashDuration: 0.5
 --- !u!212 &6479681021247000405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -130,7 +132,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6779175396243794579}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

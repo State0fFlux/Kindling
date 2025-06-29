@@ -10,14 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3762732346357426178}
   - component: {fileID: 4800080103384276672}
-  - component: {fileID: 5783504606449855854}
   - component: {fileID: 2960353155086253449}
   - component: {fileID: 4828838827790189127}
   - component: {fileID: 348563804956860879}
   - component: {fileID: 4057156729182975643}
   - component: {fileID: 2282852723968312598}
   - component: {fileID: 6407940893378435629}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Gobbo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,24 +55,9 @@ MonoBehaviour:
   speedMult: 1
   centerOfBody: {fileID: 5392221137999063529}
   staminaRegenRate: 5
-  sprintCost: 30
+  sprintCost: 20
   cycleCooldown: 0.2
   basket: {fileID: 2551820898386336026}
---- !u!114 &5783504606449855854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1808278801854186005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba103a58af004712ad2e18386b73663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statBar: {fileID: 0}
-  maxStat: 50
-  currStat: 50
 --- !u!114 &2960353155086253449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,10 +85,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3799debb5e24458a53d232fefb25ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots: 5
+  slots: 4
   initialItems:
-  - {fileID: 0}
-  initialCounts: 
+  - {fileID: 2022755337554948150, guid: 0d71ead194a274027a00757c6fe68342, type: 3}
+  - {fileID: -5510175389193367650, guid: 310e56c3b0cee4715ac63c21a961fbc3, type: 3}
+  - {fileID: 7744812824053924148, guid: d81243434c59d47f6b9d82bc10fbe939, type: 3}
+  initialCounts: 010000000100000064000000
 --- !u!50 &348563804956860879
 Rigidbody2D:
   serializedVersion: 5
@@ -243,8 +229,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.030593991, y: 0.4755249}
-  m_Size: {x: 0.46438432, y: 0.9510498}
+  m_Offset: {x: 0.030593991, y: 0.47435337}
+  m_Size: {x: 0.3565051, y: 0.7929584}
   m_Direction: 0
 --- !u!1 &2551820898386336026
 GameObject:
@@ -257,9 +243,9 @@ GameObject:
   - component: {fileID: 5029000487514755033}
   - component: {fileID: 4007956678657892973}
   - component: {fileID: 5528034375206350603}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Basket
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,7 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5392221137999063529}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Projectile Spawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,8 +9,7 @@ public class LinearProjectile : Ranged
         Inventory.Instance.Remove(this);
         GameObject clone = Instantiate(gameObject, parent.position, Quaternion.identity);
         Rigidbody2D cloneRb = clone.GetComponent<Rigidbody2D>();
-        cloneRb.linearVelocity = GetAimDirection(aimInput);
-        cloneRb.linearVelocity *= Global.speed * speedMult;
+        cloneRb.linearVelocity = GetAimDirection(aimInput) *Global.speed * speedMult;
     }
 
     public override Vector2 GetAimDirection(Vector2 aimInput)

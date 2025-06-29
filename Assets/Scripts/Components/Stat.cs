@@ -38,7 +38,9 @@ public abstract class Stat : MonoBehaviour
     public void Decay(float rate)
     {
         if (rate < 0f) throw new System.Exception("Decay rate must be positive");
-        Hurt(rate * Time.deltaTime);
+        currStat -= rate * Time.deltaTime;
+        if (currStat < 0f) currStat = 0f; // Prevent negative HP
+        if (statBar != null) UIManager.Instance.UpdateStat(statBar, currStat, maxStat);
     }
 
     public float GetStat()

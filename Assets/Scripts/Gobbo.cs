@@ -21,14 +21,12 @@ public class Gobbo : MonoBehaviour
     // Stats
     private bool immobilized = false;
     private bool facingRight = true;
-    private bool sprinting = false;
     private float cycleCounter = 0;
     private float moveX;
     private Vector2 aimInput;
     private Item currItem;
 
     // Components
-    private Health health;
     private Stamina stamina;
     private Rigidbody2D rb;
     private Animator animator;
@@ -40,18 +38,36 @@ public class Gobbo : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        health = GetComponent<Health>();
         stamina = GetComponent<Stamina>();
     }
 
 
+
     void Update()
     {
-        health.Regen(0.25f); // Heal slowly over time
-
         currItem = Inventory.Instance.GetEquipped();
 
-        // Handle hold actions
+        HandleBasket();
+        HandleMovementInput();
+
+        if (immobilized)
+        {
+            return;
+        }
+        HandleWeaponInput();
+        HandleInventoryInput();
+    }
+
+    void FixedUpdate()
+    {
+        if (!immobilized && moveX != 0)
+        {
+            rb.linearVelocityX = moveX * Global.speed * speedMult;
+        }
+    }
+
+    void HandleBasket()
+    {
         if (currItem is Basket)
         {
             if (Input.GetButton("Use"))
@@ -65,15 +81,11 @@ public class Gobbo : MonoBehaviour
                 basket.SetActive(false);
             }
         }
+    }
 
-        if (immobilized) // prevent any actions while immobilized
-        {
-            return;
-        }
-
-        // Handle actions
-
-        moveX = Input.GetAxisRaw("Horizontal");
+    void HandleMovementInput()
+    {
+        moveX = immobilized? 0: Input.GetAxisRaw("Horizontal");
         animator.SetInteger("MoveX", (int)moveX);
 
         if (moveX < 0)
@@ -86,6 +98,21 @@ public class Gobbo : MonoBehaviour
         }
         spriteRenderer.flipX = !facingRight;
 
+        if (Input.GetButton("Sprint") && stamina.GetStat() > 0f && !immobilized)
+        {
+            speedMult = 2;
+            animator.speed = 2;
+            stamina.Decay(sprintCost);
+        }
+        else
+        {
+            speedMult = 1;
+            animator.speed = 1;
+            stamina.Regen(staminaRegenRate);
+        }
+    }
+
+    void HandleWeaponInput() {
         if (Input.GetButtonDown("Use"))
         {
             if (currItem is Weapon) {
@@ -108,78 +135,48 @@ public class Gobbo : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            float cycle = Input.GetAxisRaw("Cycle Inventory");
-            float equip = Input.GetAxisRaw("Equip");
-            if (cycle == 0)
-            {
-                cycleCounter = 0;
-            }
-            if (cycleCounter <= 0f)
-            {
-                if (cycle > 0)
-                {
-                    cycleCounter = cycleCooldown; // Reset cycle counter
-                    Inventory.Instance.CycleRight();
-                }
-                else if (cycle < 0)
-                {
-                    cycleCounter = cycleCooldown; // Reset cycle counter
-                    Inventory.Instance.CycleLeft();
-                }
-            }
+    }
 
-            if (equip != 0 && Inventory.Instance.GetSelected() != null)
+    void HandleInventoryInput()
+    {
+        float cycle = Input.GetAxisRaw("Cycle Inventory");
+        float equip = Input.GetAxisRaw("Equip");
+        if (cycle == 0)
+        {
+            cycleCounter = 0;
+        }
+        if (cycleCounter <= 0f)
+        {
+            if (cycle > 0)
             {
-                if (equip > 0 && Inventory.Instance.GetEquipped() == null)
-                {
-                    Inventory.Instance.SetEquipped(true);
-                }
-                else if (equip < 0 && Inventory.Instance.GetEquipped() != null)
-                {
-                    Inventory.Instance.SetEquipped(false);
-                }
+                cycleCounter = cycleCooldown; // Reset cycle counter
+                Inventory.Instance.CycleRight();
+            }
+            else if (cycle < 0)
+            {
+                cycleCounter = cycleCooldown; // Reset cycle counter
+                Inventory.Instance.CycleLeft();
             }
         }
 
-        if (Input.GetButtonDown("Sprint") && stamina.GetStat() > 0f && !sprinting)
+        if (equip != 0 && Inventory.Instance.GetSelected() != null)
         {
-            sprinting = true; // Set sprinting flag
-            speedMult *= 2f;
-            animator.speed = speedMult;
+            if (equip > 0 && Inventory.Instance.GetEquipped() == null)
+            {
+                Inventory.Instance.SetEquipped(true);
+            }
+            else if (equip < 0 && Inventory.Instance.GetEquipped() != null)
+            {
+                Inventory.Instance.SetEquipped(false);
+            }
         }
-        else if ((Input.GetButtonUp("Sprint") || stamina.GetStat() <= 0f) && sprinting)
-        {
-            sprinting = false; // Reset sprinting flag
-            speedMult /= 2f; // Reset speed multiplier
-            animator.speed = speedMult;
-        }
-
-        if (sprinting)
-        {
-            stamina.Decay(sprintCost);
-        }
-        else
-        {
-            stamina.Regen(staminaRegenRate);
-        }
-
         cycleCounter = cycleCounter - Time.deltaTime;
     }
 
-    void FixedUpdate()
-    {
-        if (!immobilized && moveX != 0)
-        {
-            rb.linearVelocityX = moveX * Global.speed * speedMult;
-        }
-    }
-
     public void OnActionComplete()
-    {
-        immobilized = false; // Reset immobilization after action
-    }
+{
+    immobilized = false; // Reset immobilization after action
+}
 
     public void OnItemUsed()
     {

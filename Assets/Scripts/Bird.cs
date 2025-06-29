@@ -33,30 +33,19 @@ public class Bird : MonoBehaviour
 
 
         float spawnWidth = (Global.borderRight - Global.borderLeft) * 0.8f;
+        float leftEdge = -spawnWidth / 2f;
+        float segmentWidth = spawnWidth / dropCount;
 
         dropPoints = new float[dropCount];
         hasDropped = new bool[dropCount];
 
-        bool droppingOnFurny = UnityEngine.Random.value < 0.4f; // 40% chance to drop on Furny
-        if (droppingOnFurny)
+        for (int i = 0; i < dropCount; i++)
         {
-            dropPoints[0] = Global.FurnyX; // First drop on Furny
-            hasDropped[0] = false;
-        }
-        for (int i = droppingOnFurny ? 1 : 0; i < dropCount; i++)
-        {
-            float roll = UnityEngine.Random.value;
-            if (roll < 0.7) // 50% chance to drop on left side
-            {
-                dropPoints[i] = UnityEngine.Random.Range(-spawnWidth / 2, Global.FurnyX - 3); // provide cushion
-            }
-            else // 50% chance to drop on right side
-            {
-                dropPoints[i] = UnityEngine.Random.Range(Global.FurnyX + 3, spawnWidth / 2);
-            }
+            float segmentStart = leftEdge + i * segmentWidth;
+            float segmentEnd = segmentStart + segmentWidth;
+            dropPoints[i] = UnityEngine.Random.Range(segmentStart, segmentEnd);
             hasDropped[i] = false;
         }
-        Array.Sort(dropPoints);
 
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocityX = flyingRight ? Global.speed * speedMult : -Global.speed * speedMult;

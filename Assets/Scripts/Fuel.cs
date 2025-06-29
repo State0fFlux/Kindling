@@ -17,25 +17,16 @@ public class Fuel : Item
         health = GetComponent<Health>();
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.CompareTag("Basket")) { // collect pinecone
-            Inventory.Instance.Add(this);
-            Destroy(gameObject);
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject.CompareTag("Hero") || collision.collider.gameObject.CompareTag("Ground"))
+        print("collision: " + collision.collider);
+        if (collision.collider.gameObject.CompareTag("Basket"))
+        { // collect pinecone
+            Inventory.Instance.Add(this);
+            Destroy(gameObject);
+        } else if (!collision.collider.gameObject.CompareTag("HouseWalls"))
         {
             health.Hurt(health.GetStat()); // deplete health
         }
-    }
-
-    void StopMoving()
-    {
-            rb.angularVelocity = 0f; // stop rotation when hitting the ground
-            rb.linearVelocityY = 0f; // stop falling
     }
 }
