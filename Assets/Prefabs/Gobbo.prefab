@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6407940893378435629}
   m_Layer: 8
   m_Name: Gobbo
-  m_TagString: Untagged
+  m_TagString: Gobbo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

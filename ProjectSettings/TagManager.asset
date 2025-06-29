@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - HouseWalls
   - Furny
+  - Gobbo
   layers:
   - Default
   - TransparentFX
