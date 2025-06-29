@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     // Stats
     private bool equipped = false;
     private int selectedIndex = 0;
-        private ItemStack[] items; // array to hold items in the inventory
+    private ItemStack[] items; // array to hold items in the inventory
 
 
     void Awake()
@@ -22,7 +22,6 @@ public class Inventory : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -87,11 +86,16 @@ public class Inventory : MonoBehaviour
     public void Add(Item item)
     {
         // try to add to existing stack
-        foreach (ItemStack stack in items)
+        for (int i = 0; i < items.Length; i++)
         {
+            ItemStack stack = items[i];
             if (stack != null && stack.GetItem().Equals(item))
             {
                 stack.Add();
+                if (i == selectedIndex)
+                {
+                    SetEquipped(true);
+                }
                 UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
                 return;
             }
@@ -111,19 +115,39 @@ public class Inventory : MonoBehaviour
 
     public void Remove(Item item)
     {
+    for (int i = 0; i < items.Length; i++)
+    {
+        ItemStack stack = items[i];
+        if (stack != null && stack.GetItem().Equals(item))
+        {
+            stack.Remove();
+
+            if (stack.GetCount() <= 0)
+            {
+                items[i] = null;
+
+                // If this was the equipped item, unequip it
+                if (i == selectedIndex)
+                {
+                    SetEquipped(false);
+                }
+            }
+
+            UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+            return;
+        }
+    }
+    }
+
+    public bool Contains(Item item)
+    {
         foreach (ItemStack stack in items)
         {
             if (stack != null && stack.GetItem().Equals(item))
             {
-                stack.Remove();
-                if (items[selectedIndex].GetCount() <= 0)
-                {
-                    items[selectedIndex] = null;
-                    SetEquipped(false);
-                }
-                UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
-                return;
+                return true;
             }
         }
+        return false;
     }
 }

@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void UpdateStat(GameObject statBar, float currStat, float maxStat)
