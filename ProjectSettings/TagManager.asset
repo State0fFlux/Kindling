@@ -10,6 +10,7 @@ TagManager:
   - HouseWalls
   - Furny
   - Gobbo
+  - House
   layers:
   - Default
   - TransparentFX

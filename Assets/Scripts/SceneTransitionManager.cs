@@ -9,6 +9,18 @@ public class SceneTransitionManager : MonoBehaviour
 
     [Header("Transition Settings")]
     [SerializeField] private float transitionDuration = 1f;
+    [SerializeField] private AudioClip opening;
+    [SerializeField] private AudioClip closing;
+    [SerializeField] private AudioClip lobbyTheme;
+    [SerializeField] private AudioClip gameTheme;
+    [SerializeField] private AudioClip prologueTheme;
+    [SerializeField] private AudioClip winTheme;
+    [SerializeField] private AudioClip loseTheme;
+
+    // Components
+    private AudioSource sfxSrc;
+    private AudioSource musicSrc;
+    private AudioClip currentMusic;
 
     private RawImage overlayImage;            // Assign your RawImage here in Inspector
     private Material overlayMaterial;
@@ -21,7 +33,7 @@ public class SceneTransitionManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else 
+        else
         {
             Destroy(gameObject);
             return;
@@ -34,6 +46,24 @@ public class SceneTransitionManager : MonoBehaviour
         overlayMaterial = Instantiate(overlayImage.material);
         overlayImage.material = overlayMaterial;
         overlayMaterial.SetFloat("_Radius", 1f); // Start fully covered
+
+        sfxSrc = GetComponent<AudioSource>();
+
+        musicSrc = gameObject.AddComponent<AudioSource>();
+        musicSrc.loop = true;
+        musicSrc.volume = 1f;
+        
+        musicSrc.clip = lobbyTheme;
+        musicSrc.Play();
+        currentMusic = lobbyTheme;
+    }
+
+    public IEnumerator Quit()
+    {
+        sfxSrc.PlayOneShot(closing);
+
+        yield return AnimateRadius(0f, 1f, transitionDuration / 2);
+        Application.Quit();
     }
 
     public void TransitionToLose() => StartCoroutine(TransitionToScene("LoseScene"));
@@ -43,30 +73,93 @@ public class SceneTransitionManager : MonoBehaviour
 
     private IEnumerator TransitionToScene(string sceneName)
     {
-        // Animate circle closing (radius 1.5 to 0)
-        yield return AnimateRadius(1f, 0f, transitionDuration / 2f);
+        AudioClip nextMusic = GetMusicForScene(sceneName);
 
-        // Load new scene
+
+        sfxSrc.PlayOneShot(closing);
+        yield return AnimateRadius(1f, 0f, transitionDuration / 2f, nextMusic != currentMusic);
+
+        musicSrc.clip = nextMusic;
+        musicSrc.Play();
         SceneManager.LoadScene(sceneName);
 
-        // Animate circle opening (radius 0 to 1.5)
-        yield return AnimateRadius(0f, 1f, transitionDuration / 2f);
+        sfxSrc.PlayOneShot(opening);
+        yield return AnimateRadius(0f, 1f, transitionDuration / 2f, nextMusic != currentMusic);
+        currentMusic = nextMusic;
+}
+
+private IEnumerator AnimateRadius(float from, float to, float duration, bool affectAudio = false)
+{
+    if (overlayMaterial == null)
+        yield break;
+
+    float elapsed = 0f;
+
+    while (elapsed < duration)
+    {
+        elapsed += Time.deltaTime;
+        float t = Mathf.Clamp01(elapsed / duration);
+        float eased = Mathf.SmoothStep(from, to, t);
+        overlayMaterial.SetFloat("_Radius", eased);
+
+        if (affectAudio && musicSrc != null)
+        {
+            // Ease pitch down or up
+            musicSrc.pitch = Mathf.Lerp(from, to, t);
+        }
+
+        yield return null;
     }
 
-    private IEnumerator AnimateRadius(float from, float to, float duration)
-    {
-        if (overlayMaterial == null)
-            yield break;
+    overlayMaterial.SetFloat("_Radius", to);
 
-        float elapsed = 0f;
-        while (elapsed < duration)
+    if (affectAudio && musicSrc != null)
+    {
+        musicSrc.pitch = to;
+    }
+}
+
+
+        private IEnumerator FadeOutMusic()
+    {
+        float duration = transitionDuration / 2f;
+        float startVol = musicSrc.volume;
+        float t = 0f;
+        while (t < duration)
         {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            float eased = Mathf.SmoothStep(from, to, t);
-            overlayMaterial.SetFloat("_Radius", eased);
+            t += Time.deltaTime;
+            musicSrc.volume = Mathf.Lerp(startVol, 0f, t / duration);
             yield return null;
         }
-        overlayMaterial.SetFloat("_Radius", to);
+        musicSrc.volume = 0f;
+    }
+
+    private IEnumerator FadeInMusic()
+    {
+        float duration = transitionDuration / 2f;
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            musicSrc.volume = Mathf.Lerp(0f, 1f, t / duration);
+            yield return null;
+        }
+        musicSrc.volume = 1f;
+    }
+    
+    private AudioClip GetMusicForScene(string sceneName)
+    {
+        return sceneName switch
+        {
+            "LobbyScene" => lobbyTheme,
+            "CreditsScene" => lobbyTheme,
+            "PrologueScene" => prologueTheme,
+            "GameScene" => gameTheme,
+            "HowToPlayScene" => lobbyTheme,
+            "LoseScene" => loseTheme,
+            "WinScene" => winTheme,
+            // Add others as needed
+            _ => null
+        };
     }
 }

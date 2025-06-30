@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8862500681528105033}
   - component: {fileID: 6308469237961555579}
+  - component: {fileID: 5436734904790343533}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -112,6 +113,20 @@ MonoBehaviour:
   - {x: 0.4157348, y: -0.27778515, z: 0}
   - {x: 0.46193978, y: -0.19134171, z: 0}
   - {x: 0.49039266, y: -0.09754512, z: 0}
+--- !u!114 &5436734904790343533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044990502983516363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589905ce50d2246aead9e045c63a7ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerAmplitude: 0.2
+  flickerFrequency: 0.1
 --- !u!1 &7113686351237144969
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,9 +209,10 @@ GameObject:
   - component: {fileID: 2615926730419012074}
   - component: {fileID: 8579400494645012138}
   - component: {fileID: 7188856249313023079}
+  - component: {fileID: 8268321932726180855}
   m_Layer: 7
   m_Name: Furny
-  m_TagString: Untagged
+  m_TagString: Furny
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,12 +246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5f8d4f2a98c4f678b4dcfde2dcf273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flickerAmplitude: 0.1
-  flickerFrequency: 0.2
-  fireball: {fileID: 0}
-  pinecone: {fileID: 0}
-  healAmount: 0
-  interval: 0
+  fireball: {fileID: 7744812824053924148, guid: d81243434c59d47f6b9d82bc10fbe939, type: 3}
+  pinecone: {fileID: 7810755881935902405, guid: 2c104d8f798ee46bb931c9eae87b91d9, type: 3}
+  healAmount: 5
+  interval: 1
 --- !u!114 &748006808598911605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +267,9 @@ MonoBehaviour:
   currStat: 100
   flashColor: {r: 0, g: 0, b: 0, a: 0}
   flashDuration: 0.5
+  hurtNoise: []
+  deathNoise:
+  - {fileID: 8300000, guid: 5f4a453581a4e4dd29cc17ea83a649c9, type: 3}
 --- !u!212 &2615926730419012074
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -367,3 +384,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &8268321932726180855
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336699660675938762}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

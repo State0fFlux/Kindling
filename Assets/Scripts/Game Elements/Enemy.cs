@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,6 +10,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float cooldown;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip[] spawnNoise;
+    [SerializeField] private AudioClip[] attackNoise;
+
+
     // State
     private float lastAttackTime = -Mathf.Infinity;
     private Vector2 direction;
@@ -18,11 +22,17 @@ public class Enemy : MonoBehaviour
     // Components
     private Rigidbody2D rb;
     private Animator anim;
+    private AudioSource audioSrc;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audioSrc = GetComponent<AudioSource>();
+
+        if (spawnNoise.Length > 0) {
+            audioSrc.PlayOneShot(spawnNoise[Random.Range(0, spawnNoise.Length)]);
+        }
 
         // Decide direction based on spawn position and Global.furnyX
         float targetX = Global.FurnyX;
@@ -51,6 +61,11 @@ public class Enemy : MonoBehaviour
                 if (targetHealth != null)
                 {
                     anim.SetTrigger("Attack");
+
+                    if (attackNoise.Length > 0) {
+                        audioSrc.PlayOneShot(attackNoise[Random.Range(0, attackNoise.Length)]);
+                    }
+
                     targetHealth.Hurt(damage);
                     lastAttackTime = Time.time;
                 }

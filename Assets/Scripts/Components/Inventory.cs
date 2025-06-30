@@ -108,6 +108,11 @@ public class Inventory : MonoBehaviour
             {
                 items[i] = new ItemStack(item);
                 UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+
+                if (i == selectedIndex)
+                {
+                    SetEquipped(true);
+                }
                 return;
             }
         }

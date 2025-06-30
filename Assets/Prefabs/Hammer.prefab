@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b27559450d6420eaa1947d5feca339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 1907367056, guid: dec8f78b9914d49d394e29d5621edfc5, type: 3}
+  icon: {fileID: 5393448996881579246, guid: b40fb277fedc1493a80eb53288baeaea, type: 3}
   range: 1
   maxHits: 1
-  damage: 10
+  damage: 25
   recoil: 0
-  staminaCost: 25
+  staminaCost: 75
 --- !u!212 &-1111174420377853565
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1907367056, guid: dec8f78b9914d49d394e29d5621edfc5, type: 3}
+  m_Sprite: {fileID: 5393448996881579246, guid: b40fb277fedc1493a80eb53288baeaea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

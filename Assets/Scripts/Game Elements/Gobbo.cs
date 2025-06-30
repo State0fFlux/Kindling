@@ -20,7 +20,8 @@ public class Gobbo : MonoBehaviour
 
     // Stats
     private bool immobilized = false;
-    private bool facingRight = true;
+    private bool inHouse = true;
+    private bool facingRight;
     private float cycleCounter = 0;
     private float moveX;
     private Vector2 aimInput;
@@ -39,6 +40,8 @@ public class Gobbo : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         stamina = GetComponent<Stamina>();
+
+        facingRight = !spriteRenderer.flipX;
     }
 
 
@@ -115,7 +118,14 @@ public class Gobbo : MonoBehaviour
     void HandleWeaponInput() {
         if (Input.GetButtonDown("Use"))
         {
-            if (currItem is Weapon) {
+            
+            if (currItem is Ranged && inHouse) {
+                print("Furny: You know how I hate weapons inside the house, dear!");
+                return;
+            }
+
+            if (currItem is Weapon)
+            {
                 aimInput = new Vector2(facingRight ? 1 : -1, Input.GetAxisRaw("Aim"));
                 if (aimInput.y < 0) aimInput.y = 0; // Temporary fix, prevent downward aim
                 if (currItem is Ranged || stamina.GetStat() >= ((Melee)currItem).GetStaminaCost()) // can afford to use weapon
@@ -173,10 +183,24 @@ public class Gobbo : MonoBehaviour
         cycleCounter = cycleCounter - Time.deltaTime;
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("House")) {
+            inHouse = true;
+        }
+    }
+
+        void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("House")) {
+            inHouse = false;
+        }
+    }
+
     public void OnActionComplete()
-{
-    immobilized = false; // Reset immobilization after action
-}
+    {
+        immobilized = false; // Reset immobilization after action
+    }
 
     public void OnItemUsed()
     {

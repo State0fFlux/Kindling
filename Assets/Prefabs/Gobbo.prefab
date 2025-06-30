@@ -89,8 +89,7 @@ MonoBehaviour:
   initialItems:
   - {fileID: 2022755337554948150, guid: 0d71ead194a274027a00757c6fe68342, type: 3}
   - {fileID: -5510175389193367650, guid: 310e56c3b0cee4715ac63c21a961fbc3, type: 3}
-  - {fileID: 7744812824053924148, guid: d81243434c59d47f6b9d82bc10fbe939, type: 3}
-  initialCounts: 010000000100000064000000
+  initialCounts: 0100000001000000
 --- !u!50 &348563804956860879
 Rigidbody2D:
   serializedVersion: 5
