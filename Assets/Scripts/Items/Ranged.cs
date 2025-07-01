@@ -31,7 +31,6 @@ public abstract class Ranged : Weapon
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        print(collision);
         GameObject obj = collision.collider.gameObject;
         if (obj.layer == LayerMask.NameToLayer("Goodwall") || obj.layer == LayerMask.NameToLayer("Uglywall"))
         {

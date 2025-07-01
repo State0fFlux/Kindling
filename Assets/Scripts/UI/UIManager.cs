@@ -55,7 +55,9 @@ public class UIManager : MonoBehaviour
         }
 
         UpdateInventory(items, selectedIndex, equipped);
+        
     }
+    
 
     public void UpdateInventory(ItemStack[] inventory, int selectedIndex, bool equipped)
     {

@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AudioClip[] spawnNoise;
     [SerializeField] private AudioClip[] attackNoise;
 
-
     // State
     private float lastAttackTime = -Mathf.Infinity;
     private Vector2 direction;
@@ -33,6 +32,12 @@ public class Enemy : MonoBehaviour
         if (spawnNoise.Length > 0) {
             audioSrc.PlayOneShot(spawnNoise[Random.Range(0, spawnNoise.Length)]);
         }
+
+        // Randomly spawn on the left or right
+        if (Random.value > 0.5f)
+            transform.position = new Vector2(Global.borderLeft - 1f, -5);
+        else
+            transform.position = new Vector2(Global.borderRight + 1f, -5);
 
         // Decide direction based on spawn position and Global.furnyX
         float targetX = Global.FurnyX;

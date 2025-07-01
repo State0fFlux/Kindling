@@ -1,37 +1,41 @@
 using System.Collections;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Health : Stat
 {
     [Header("Health Settings")]
-    [SerializeField] private Color flashColor;
+    [SerializeField] private Color hurtColor = Color.red;
+    [SerializeField] private Color healColor = Color.green;
     [SerializeField] private float flashDuration = 0.25f;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip[] hurtNoise;
+    [SerializeField] private AudioClip healNoise;
     [SerializeField] private AudioClip[] deathNoise;
 
-    private Material mat;
+    // Stats
     private SpriteRenderer[] spriteRenderers;
-    private AudioSource audioSrc;
     private bool hasDied = false;
+
+    // Components
+    private Material mat;
+    private AudioSource audioSrc;
+    private Collider2D[] cols;
+
 
     protected override void Start()
     {
         base.Start();
 
         audioSrc = GetComponent<AudioSource>();
+        cols = GetComponentsInChildren<Collider2D>();
 
         // Get all SpriteRenderers in this GameObject and children
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
         mat = Instantiate(spriteRenderers[0].material);
-
-        if (flashColor != Color.clear)
-        {
-            mat.SetColor("_FlashColor", flashColor);
-            mat.SetColor("_DissolveColor", flashColor);
-        }
+        mat.SetColor("_DissolveColor", hurtColor);
 
         // Assign the instantiated material to all SpriteRenderers
         foreach (var sr in spriteRenderers)
@@ -50,6 +54,7 @@ public class Health : Stat
 
     public override void Hurt(float amount)
     {
+        mat.SetColor("_FlashColor", hurtColor);
 
         StartCoroutine(Flash()); // add visual feedback
         base.Hurt(amount); // apply normal health reduction
@@ -57,6 +62,21 @@ public class Health : Stat
         if (GetStat() > 0f && hurtNoise.Length > 0) {
             print("hurt");
             audioSrc.PlayOneShot(hurtNoise[Random.Range(0, hurtNoise.Length)]);
+        }
+    }
+
+    public override void Heal(float amount)
+    {
+        mat.SetColor("_FlashColor", healColor);
+
+        StartCoroutine(Flash()); // add visual feedback
+        base.Heal(amount); // apply normal health reduction
+
+        if (healNoise != null)
+        {
+            audioSrc.pitch = 1 + Random.Range(-0.5f, 0.5f);
+            audioSrc.PlayOneShot(healNoise);
+            audioSrc.pitch = 1;
         }
     }
 
@@ -79,11 +99,22 @@ public class Health : Stat
     private IEnumerator Die()
     {
         hasDied = true;
+
+        // Disable all colliders
+        foreach (var col in cols)
+        {
+            col.enabled = false;
+        }
+
+        if (TryGetComponent<Rigidbody2D>(out var rb))
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+        }
         
         if (deathNoise.Length > 0)
-        {
-            audioSrc.PlayOneShot(deathNoise[Random.Range(0, deathNoise.Length)]);
-        }
+            {
+                audioSrc.PlayOneShot(deathNoise[Random.Range(0, deathNoise.Length)]);
+            }
         
         float timer = 0f;
 

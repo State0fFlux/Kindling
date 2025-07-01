@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ddd412ba5e454891b119434b2ece433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMult: 0.5
-  damage: 25
-  cooldown: 3
+  speedMult: 0.25
+  damage: 20
+  cooldown: 5
   spawnNoise:
   - {fileID: 8300000, guid: 87d9d37f9704d42bca4389c21218d6a2, type: 3}
   attackNoise:
@@ -73,14 +73,16 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 60
   currStat: 60
-  flashColor: {r: 0, g: 0, b: 0, a: 0}
-  flashDuration: 0.5
+  hurtColor: {r: 1, g: 0, b: 0, a: 1}
+  healColor: {r: 0, g: 1, b: 0, a: 1}
+  flashDuration: 2
   hurtNoise:
   - {fileID: 8300000, guid: 4ca794106977246d29f273d90f1a231e, type: 3}
   - {fileID: 8300000, guid: 3c2ab8f8e50074383a3ac31f0b067693, type: 3}
   - {fileID: 8300000, guid: f19b504c385584941abf5f8d88597e4f, type: 3}
   - {fileID: 8300000, guid: 470156ebc2535456b9100d9da8bdede5, type: 3}
   - {fileID: 8300000, guid: 0c48098b9a6534535a4654786c727c24, type: 3}
+  healNoise: {fileID: 0}
   deathNoise:
   - {fileID: 8300000, guid: 554e869e633cd46b9bdf8b0b9793ac7c, type: 3}
   - {fileID: 8300000, guid: 72c64f626f7404ebca4ad5939cfdf1c7, type: 3}

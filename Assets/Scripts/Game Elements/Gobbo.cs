@@ -32,6 +32,7 @@ public class Gobbo : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private AudioSource audioSrc;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +41,7 @@ public class Gobbo : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         stamina = GetComponent<Stamina>();
+        audioSrc = GetComponent<AudioSource>();
 
         facingRight = !spriteRenderer.flipX;
     }
@@ -76,12 +78,16 @@ public class Gobbo : MonoBehaviour
             if (Input.GetButton("Use"))
             {
                 immobilized = true;
-                basket.SetActive(true);
+                animator.SetBool("Basket", true);
+                basket.GetComponent<Collider2D>().enabled = true;
+                basket.GetComponent<SpriteRenderer>().enabled = true;
             }
             else
             {
                 immobilized = false;
-                basket.SetActive(false);
+                animator.SetBool("Basket", false);
+                basket.GetComponent<Collider2D>().enabled = false;
+                basket.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
     }
@@ -134,11 +140,13 @@ public class Gobbo : MonoBehaviour
                     immobilized = true;
                     animator.speed = 1f; // Reset animator speed
 
-                    if (currItem is LinearProjectile)
+                    audioSrc.PlayOneShot(((Weapon)currItem).GetNoise());
+
+                    if (currItem is Fireball)
                     {
                         animator.SetTrigger("Shoot");
                     }
-                    else // Melee
+                    else if (currItem is Hammer) // Melee
                     {
                         animator.SetTrigger(currItem.name); // includes a call to Use
                     }

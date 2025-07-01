@@ -12,7 +12,6 @@ public class Furny : MonoBehaviour
 
     // Stats
     private Coroutine activeCoroutine;
-    private bool dead = false;
 
     // Components
     Stat health;
@@ -32,11 +31,9 @@ public class Furny : MonoBehaviour
     {
         // Decrease health points over time
         health.Decay(1f);
-        if (health.GetStat() <= 0f && !dead)
+        if (health.GetStat() <= 0f)
         {
-            dead = true;
             anim.SetTrigger("Die");
-            SceneTransitionManager.Instance.TransitionToLose();
         }
     }
 
@@ -71,16 +68,21 @@ public class Furny : MonoBehaviour
     {
         while (true)
         {
-            // Always add a fireball
-            Inventory.Instance.Add(fireball);
-
             // Heal if pinecones are available
-            if (Inventory.Instance.Contains(pinecone) && health.GetStat() + healAmount <= health.GetMax())
+            if (Inventory.Instance.Contains(pinecone))
             {
+                Inventory.Instance.Add(fireball);
                 Inventory.Instance.Remove(pinecone);
-                health.Heal(healAmount);
+                if (health.GetStat() + healAmount <= health.GetMax()) {
+                    health.Heal(healAmount);
+                }
             }
             yield return new WaitForSeconds(interval);
         }
+    }
+
+    void OnDestroy()
+    {
+        SceneTransitionManager.Instance.TransitionToLose();
     }
 }

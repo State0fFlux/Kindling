@@ -77,8 +77,9 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 30
   currStat: 30
-  flashColor: {r: 0, g: 0, b: 0, a: 0}
-  flashDuration: 0.5
+  hurtColor: {r: 1, g: 0, b: 0, a: 1}
+  healColor: {r: 0, g: 1, b: 0, a: 1}
+  flashDuration: 2
   hurtNoise:
   - {fileID: 8300000, guid: 103d44c90b6a54deca11d4b9558dc7ea, type: 3}
   - {fileID: 8300000, guid: ecb0514254c11440eb71414883f3ca59, type: 3}
@@ -86,6 +87,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cb1b7a34e1a2540afa357dce37258633, type: 3}
   - {fileID: 8300000, guid: 4f4d20f69f4844a1b873cc4ee4a00371, type: 3}
   - {fileID: 8300000, guid: 8683715d8c9b241d7b6dbafe819c08e1, type: 3}
+  healNoise: {fileID: 0}
   deathNoise:
   - {fileID: 8300000, guid: 29c6db16e81b4407f94de0440b62ee9c, type: 3}
   - {fileID: 8300000, guid: cf18fc5b5ca2d47048b6d09c59cf2753, type: 3}

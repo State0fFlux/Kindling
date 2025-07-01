@@ -7,11 +7,15 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int slots;
     [SerializeField] private Item[] initialItems;
     [SerializeField] private int[] initialCounts;
+    [SerializeField] private AudioClip fireAdd;
 
     // Stats
     private bool equipped = false;
     private int selectedIndex = 0;
     private ItemStack[] items; // array to hold items in the inventory
+
+    // Components
+    private AudioSource audioSrc;
 
 
     void Awake()
@@ -26,6 +30,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        audioSrc = GetComponent<AudioSource>();
         items = new ItemStack[slots]; // initialize the inventory with the specified number of slots
 
         for (int i = 0; i < slots; i++)
@@ -54,6 +59,7 @@ public class Inventory : MonoBehaviour
 
     public Item GetSelected()
     {
+        if (items[selectedIndex] == null) return null;
         return items[selectedIndex].GetItem();
     }
 
@@ -69,6 +75,9 @@ public class Inventory : MonoBehaviour
             this.equipped = equipped;
         }
         UIManager.Instance.UpdateInventory(items, selectedIndex, this.equipped);
+
+        audioSrc.pitch = equipped ? 1.1f : 0.9f;
+        audioSrc.Play();
     }
 
     public void CycleLeft()
@@ -91,8 +100,11 @@ public class Inventory : MonoBehaviour
             ItemStack stack = items[i];
             if (stack != null && stack.GetItem().Equals(item))
             {
+                if (item is Fireball) {
+                    audioSrc.PlayOneShot(fireAdd);
+                }
                 stack.Add();
-                if (i == selectedIndex)
+                if (i == selectedIndex && !equipped)
                 {
                     SetEquipped(true);
                 }

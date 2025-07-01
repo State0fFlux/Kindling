@@ -13,7 +13,7 @@ public abstract class Stat : MonoBehaviour
         if (statBar != null) UIManager.Instance.UpdateStat(statBar, currStat, maxStat); // Initialize HP in UI
     }
 
-    public void Heal(float amount)
+    public virtual void Heal(float amount)
     {
         if (amount < 0f) throw new System.Exception("Healing amount must be positive");
         currStat += amount;

@@ -7,27 +7,18 @@ public class Hammer : Melee
     {
         Vector2 aimDirection = GetAimDirection(aimInput);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(parent.position, aimDirection, range, LayerMask.GetMask("Enemy"));
-        print(hits);
-        int hitCount = 0;
-
+        RaycastHit2D[] hits = Physics2D.RaycastAll(parent.position, aimDirection, range);
         foreach (var hit in hits)
         {
-            if (hit.collider != null)
-            {
-                var enemy = hit.collider.GetComponent<Health>();
-                if (enemy != null)
-                {
-                    enemy.Hurt(damage);
-                    hitCount++;
+            print(hit.collider.gameObject);
+            if (hit.collider == null) continue;
 
-                    if (hitCount >= maxHits)
-                        break;
-                }
+            if (hit.collider.gameObject.CompareTag("HouseWalls"))
+            {
+                GetComponent<AudioSource>().Play();
+                hit.collider.GetComponent<Health>().Heal(damage);
             }
         }
-
-        Debug.DrawRay(parent.position, aimDirection * range, Color.red, 5f); // debug line
     }
 
     public override Vector2 GetAimDirection(Vector2 aimInput)

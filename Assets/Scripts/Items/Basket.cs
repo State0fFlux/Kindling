@@ -1,6 +1,3 @@
 using UnityEngine;
 
-public class Basket : Item
-{
-    
-}
+public class Basket : Item {}
