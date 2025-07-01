@@ -12,6 +12,7 @@ public class Furny : MonoBehaviour
 
     // Stats
     private Coroutine activeCoroutine;
+    bool dead = false;
 
     // Components
     Stat health;
@@ -31,16 +32,17 @@ public class Furny : MonoBehaviour
     {
         // Decrease health points over time
         health.Decay(1f);
-        if (health.GetStat() <= 0f)
+        if (health.GetStat() <= 0f && !dead)
         {
+            dead = true;
             anim.SetTrigger("Die");
         }
     }
 
     void FixedUpdate()
     {
-        fire.shapeLightFalloffSize = health.GetStat() / health.GetMax() * 12; // reflect hp in light size
-        fire.intensity = fire.shapeLightFalloffSize / 3;
+        fire.shapeLightFalloffSize = health.GetStat() / health.GetMax() * 16; // reflect hp in light size
+        fire.intensity = fire.shapeLightFalloffSize / 2;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -82,7 +84,7 @@ public class Furny : MonoBehaviour
         }
     }
 
-    private void OnDeath()
+    public void OnDeath()
     {
         SceneTransitionManager.Instance.TransitionToLose();
     }

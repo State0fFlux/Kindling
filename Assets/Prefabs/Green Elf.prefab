@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMult: 1
   damage: 10
-  cooldown: 2
+  cooldown: 4
   spawnNoise:
   - {fileID: 8300000, guid: 61d2d314f716d4dec97f2c1297f28103, type: 3}
   - {fileID: 8300000, guid: 2abc3b41ec7c04752a84ea093903d9c7, type: 3}

@@ -67,8 +67,12 @@ MonoBehaviour:
   statBar: {fileID: 0}
   maxStat: 10
   currStat: 10
-  flashColor: {r: 0, g: 0, b: 0, a: 0}
+  hurtColor: {r: 1, g: 0, b: 0, a: 1}
+  healColor: {r: 0, g: 1, b: 0, a: 1}
   flashDuration: 0.5
+  hurtNoise: []
+  healNoise: {fileID: 0}
+  deathNoise: []
 --- !u!212 &6479681021247000405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -146,7 +150,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

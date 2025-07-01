@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     [Header("Game Objects")]
     [SerializeField] private GameObject tile;
     [SerializeField] private GameObject tileBox;
+    [SerializeField] private GameObject clock;
 
     // Stats
     private GameObject[] tiles;
@@ -55,9 +56,9 @@ public class UIManager : MonoBehaviour
         }
 
         UpdateInventory(items, selectedIndex, equipped);
-        
+
     }
-    
+
 
     public void UpdateInventory(ItemStack[] inventory, int selectedIndex, bool equipped)
     {
@@ -83,5 +84,10 @@ public class UIManager : MonoBehaviour
             }
             text.text = (inventory[i] != null && inventory[i].GetItem() is not Melee && inventory[i].GetItem() is not Basket) ? inventory[i].GetCount().ToString() : "";
         }
+    }
+
+    public void UpdateTime()
+    {
+        clock.GetComponent<TextMeshProUGUI>().text = NightManager.Instance.GetTime();
     }
 }

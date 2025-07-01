@@ -40,7 +40,6 @@ public class NightManager : MonoBehaviour
 
     public void Increment()
     {
-        print(hour + "->" + (hour + 1));
         hour++;
         if (hour >= hoursInNight)
         {
@@ -49,10 +48,21 @@ public class NightManager : MonoBehaviour
         else
         {
             audioSrc.PlayOneShot(hourTolls[hour]);
+            UIManager.Instance.UpdateTime();
         }
     }
 
     public int GetHour() { return hour; }
+
+    public string GetTime()
+    {
+    int timeHour = 22 + hour; // 22 is 10 PM in 24-hour time
+    int displayHour = timeHour % 12;
+    if (displayHour == 0) displayHour = 12;
+
+    string period = timeHour < 24 ? "PM" : "AM";
+    return $"{displayHour}:00 {period}";
+    }
 
     public int HoursInNight() { return hoursInNight; }
 }

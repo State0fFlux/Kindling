@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Health : Stat
@@ -60,7 +59,6 @@ public class Health : Stat
         base.Hurt(amount); // apply normal health reduction
 
         if (GetStat() > 0f && hurtNoise.Length > 0) {
-            print("hurt");
             audioSrc.PlayOneShot(hurtNoise[Random.Range(0, hurtNoise.Length)]);
         }
     }

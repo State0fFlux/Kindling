@@ -58,18 +58,19 @@ public class SceneTransitionManager : MonoBehaviour
         currentMusic = lobbyTheme;
     }
 
-    public IEnumerator Quit()
-    {
-        sfxSrc.PlayOneShot(closing);
-
-        yield return AnimateRadius(0f, 1f, transitionDuration / 2);
-        Application.Quit();
-    }
-
     public void TransitionToLose() => StartCoroutine(TransitionToScene("LoseScene"));
     public void TransitionToWin() => StartCoroutine(TransitionToScene("WinScene"));
     public void TransitionToGame() => StartCoroutine(TransitionToScene("GameScene"));
     public void TransitionToLobby() => StartCoroutine(TransitionToScene("LobbyScene"));
+    public void Quit() => StartCoroutine(QuitCoroutine());
+
+    private IEnumerator QuitCoroutine()
+    {
+        sfxSrc.PlayOneShot(closing);
+
+        yield return AnimateRadius(1f, 0f, transitionDuration / 2);
+        Application.Quit();
+    }
 
     private IEnumerator TransitionToScene(string sceneName)
     {
@@ -86,41 +87,41 @@ public class SceneTransitionManager : MonoBehaviour
         sfxSrc.PlayOneShot(opening);
         yield return AnimateRadius(0f, 1f, transitionDuration / 2f, nextMusic != currentMusic);
         currentMusic = nextMusic;
-}
+    }
 
-private IEnumerator AnimateRadius(float from, float to, float duration, bool affectAudio = false)
-{
-    if (overlayMaterial == null)
-        yield break;
-
-    float elapsed = 0f;
-
-    while (elapsed < duration)
+    private IEnumerator AnimateRadius(float from, float to, float duration, bool affectAudio = false)
     {
-        elapsed += Time.deltaTime;
-        float t = Mathf.Clamp01(elapsed / duration);
-        float eased = Mathf.SmoothStep(from, to, t);
-        overlayMaterial.SetFloat("_Radius", eased);
+        if (overlayMaterial == null)
+            yield break;
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            float eased = Mathf.SmoothStep(from, to, t);
+            overlayMaterial.SetFloat("_Radius", eased);
+
+            if (affectAudio && musicSrc != null)
+            {
+                // Ease pitch down or up
+                musicSrc.pitch = Mathf.Lerp(from, to, t);
+            }
+
+            yield return null;
+        }
+
+        overlayMaterial.SetFloat("_Radius", to);
 
         if (affectAudio && musicSrc != null)
         {
-            // Ease pitch down or up
-            musicSrc.pitch = Mathf.Lerp(from, to, t);
+            musicSrc.pitch = to;
         }
-
-        yield return null;
     }
 
-    overlayMaterial.SetFloat("_Radius", to);
 
-    if (affectAudio && musicSrc != null)
-    {
-        musicSrc.pitch = to;
-    }
-}
-
-
-        private IEnumerator FadeOutMusic()
+    private IEnumerator FadeOutMusic()
     {
         float duration = transitionDuration / 2f;
         float startVol = musicSrc.volume;

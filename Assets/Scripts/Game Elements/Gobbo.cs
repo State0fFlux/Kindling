@@ -4,10 +4,10 @@ using UnityEngine.UIElements;
 public class Gobbo : MonoBehaviour
 {
     [Header("Player Settings")]
-    [SerializeField] private float speedMult = 1f;
     [SerializeField] private Transform centerOfBody;
 
     [Header("Stamina Settings")]
+    [SerializeField] private float baseSpeedMult = 2;
     [SerializeField] private float staminaRegenRate; // rate at which stamina regenerates
     [SerializeField] private float sprintCost;
 
@@ -26,6 +26,7 @@ public class Gobbo : MonoBehaviour
     private float moveX;
     private Vector2 aimInput;
     private Item currItem;
+    private float sprintMult = 1f;
 
     // Components
     private Stamina stamina;
@@ -67,7 +68,7 @@ public class Gobbo : MonoBehaviour
     {
         if (!immobilized && moveX != 0)
         {
-            rb.linearVelocityX = moveX * Global.speed * speedMult;
+            rb.linearVelocityX = moveX * Global.speed * baseSpeedMult * sprintMult;
         }
     }
 
@@ -109,14 +110,14 @@ public class Gobbo : MonoBehaviour
 
         if (Input.GetButton("Sprint") && stamina.GetStat() > 0f && !immobilized)
         {
-            speedMult = 2;
-            animator.speed = 2;
+            sprintMult = 2f;
+            animator.speed = sprintMult;
             stamina.Decay(sprintCost);
         }
         else
         {
-            speedMult = 1;
-            animator.speed = 1;
+            sprintMult = 1f;
+            animator.speed = sprintMult;
             stamina.Regen(staminaRegenRate);
         }
     }
@@ -124,11 +125,12 @@ public class Gobbo : MonoBehaviour
     void HandleWeaponInput() {
         if (Input.GetButtonDown("Use"))
         {
-            
+            /*
             if (currItem is Ranged && inHouse) {
                 print("Furny: You know how I hate weapons inside the house, dear!");
                 return;
             }
+            */
 
             if (currItem is Weapon)
             {
@@ -136,18 +138,24 @@ public class Gobbo : MonoBehaviour
                 if (aimInput.y < 0) aimInput.y = 0; // Temporary fix, prevent downward aim
                 if (currItem is Ranged || stamina.GetStat() >= ((Melee)currItem).GetStaminaCost()) // can afford to use weapon
                 {
-                    rb.linearVelocityX = 0;
-                    immobilized = true;
-                    animator.speed = 1f; // Reset animator speed
-
-                    audioSrc.PlayOneShot(((Weapon)currItem).GetNoise());
 
                     if (currItem is Fireball)
                     {
+                        rb.linearVelocityX = 0;
+                        immobilized = true;
+                        animator.speed = 1f; // Reset animator speed
+
+                        audioSrc.PlayOneShot(((Weapon)currItem).GetNoise());
                         animator.SetTrigger("Shoot");
                     }
-                    else if (currItem is Hammer) // Melee
+                    else if (currItem is Hammer && ((Hammer)currItem).CanUse(aimInput, centerOfBody)) // Melee
                     {
+                        rb.linearVelocityX = 0;
+                        immobilized = true;
+                        animator.speed = 1f; // Reset animator speed
+
+                        audioSrc.PlayOneShot(((Weapon)currItem).GetNoise());
+                        
                         animator.SetTrigger(currItem.name); // includes a call to Use
                     }
                 }

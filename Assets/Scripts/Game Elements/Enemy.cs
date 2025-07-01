@@ -70,8 +70,6 @@ public class Enemy : MonoBehaviour
                     if (attackNoise.Length > 0) {
                         audioSrc.PlayOneShot(attackNoise[Random.Range(0, attackNoise.Length)]);
                     }
-
-                    print("hurts like hell: " + damage);
                     
                     targetHealth.Hurt(damage);
                     lastAttackTime = Time.time;

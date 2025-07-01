@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneTransitionManager.Instance.TransitionToGame();
+            SceneTransitionManager.Instance.TransitionToLobby();
         }   
     }
 

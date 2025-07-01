@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LobbyScene.unity
     guid: 42481819ca3514e6a826afe657f9be27
   - enabled: 1
-    path: Assets/Scenes/CreditsScene.unity
-    guid: 3095516e096cc4cdb91a8aeb09d6b0d2
-  - enabled: 1
-    path: Assets/Scenes/HowToPlayScene.unity
-    guid: 053881eabfe324980b84576e910eaa3a
-  - enabled: 1
     path: Assets/Scenes/PrologueScene.unity
     guid: a525510a622434a14a74e948b1c9efd7
   - enabled: 1
@@ -25,7 +19,7 @@ EditorBuildSettings:
     guid: 36f781d9d763d438194b8743ba577e6f
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
-    guid: e1d15ceace16847519eaafbb29c67ef8
+    guid: 54e15b37fa7024b3fb7fa68ea960e8da
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

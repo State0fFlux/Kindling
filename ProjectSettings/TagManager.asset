@@ -12,6 +12,7 @@ TagManager:
   - Gobbo
   - House
   - Pinecone
+  - Gift
   layers:
   - Default
   - TransparentFX
