@@ -71,9 +71,10 @@ public class Furny : MonoBehaviour
             // Heal if pinecones are available
             if (Inventory.Instance.Contains(pinecone))
             {
-                Inventory.Instance.Add(fireball);
+                Inventory.Instance.Add(fireball, 2); // give 2 fireballs for a quality of life rebalance
                 Inventory.Instance.Remove(pinecone);
-                if (health.GetStat() + healAmount <= health.GetMax()) {
+                if (health.GetStat() + healAmount <= health.GetMax())
+                {
                     health.Heal(healAmount);
                 }
             }
@@ -81,7 +82,7 @@ public class Furny : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    private void OnDeath()
     {
         SceneTransitionManager.Instance.TransitionToLose();
     }

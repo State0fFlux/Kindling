@@ -94,16 +94,22 @@ public class Inventory : MonoBehaviour
 
     public void Add(Item item)
     {
+        Add(item, 1);
+    }
+
+    public void Add(Item item, int amount)
+    {
         // try to add to existing stack
         for (int i = 0; i < items.Length; i++)
         {
             ItemStack stack = items[i];
             if (stack != null && stack.GetItem().Equals(item))
             {
-                if (item is Fireball) {
+                if (item is Fireball)
+                {
                     audioSrc.PlayOneShot(fireAdd);
                 }
-                stack.Add();
+                stack.Add(amount);
                 if (i == selectedIndex && !equipped)
                 {
                     SetEquipped(true);
@@ -118,13 +124,16 @@ public class Inventory : MonoBehaviour
         {
             if (items[i] == null)
             {
-                items[i] = new ItemStack(item);
-                UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
-
+                if (item is Fireball)
+                {
+                    audioSrc.PlayOneShot(fireAdd);
+                }
+                items[i] = new ItemStack(item, amount);
                 if (i == selectedIndex)
                 {
                     SetEquipped(true);
                 }
+                UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
                 return;
             }
         }

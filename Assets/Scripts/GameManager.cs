@@ -31,6 +31,14 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DifficultyLoop());
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneTransitionManager.Instance.TransitionToGame();
+        }   
+    }
+
     private IEnumerator BirdLoop()
     {
         while (true)

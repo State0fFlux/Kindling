@@ -35,13 +35,14 @@ public class NightManager : MonoBehaviour
     public void ResetNight()
     {
         hour = 0;
+        audioSrc.PlayOneShot(hourTolls[0]);
     }
 
     public void Increment()
     {
         print(hour + "->" + (hour + 1));
         hour++;
-        if (hour > hoursInNight)
+        if (hour >= hoursInNight)
         {
             SceneTransitionManager.Instance.TransitionToWin();
         }

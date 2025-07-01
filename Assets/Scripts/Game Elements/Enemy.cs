@@ -71,6 +71,8 @@ public class Enemy : MonoBehaviour
                         audioSrc.PlayOneShot(attackNoise[Random.Range(0, attackNoise.Length)]);
                     }
 
+                    print("hurts like hell: " + damage);
+                    
                     targetHealth.Hurt(damage);
                     lastAttackTime = Time.time;
                 }
