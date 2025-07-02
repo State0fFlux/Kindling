@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private AudioClip fireAdd;
 
     // Stats
-    private bool equipped = false;
+    private bool equipped = true;
     private int selectedIndex = 0;
     private ItemStack[] items; // array to hold items in the inventory
 

@@ -37,17 +37,14 @@ public class Hammer : Melee
         RaycastHit2D[] hits = Physics2D.RaycastAll(parent.position, aimDirection, range);
         foreach (var hit in hits)
         {
-            print(hit.collider.gameObject);
             if (hit.collider == null) continue;
 
             GameObject obj = hit.collider.gameObject;
 
             if (obj.CompareTag("Gift") || obj.CompareTag("HouseWalls")) {
-                print("yep looks good!");
                 return true;
             }
         }
-        print("aw man");
         return false;
     }
 

@@ -13,6 +13,7 @@ TagManager:
   - House
   - Pinecone
   - Gift
+  - Boss
   layers:
   - Default
   - TransparentFX

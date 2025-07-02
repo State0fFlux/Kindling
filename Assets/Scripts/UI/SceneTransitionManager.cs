@@ -120,32 +120,27 @@ public class SceneTransitionManager : MonoBehaviour
         }
     }
 
-
-    private IEnumerator FadeOutMusic()
+    public IEnumerator FadeMusic(float start, float end)
     {
-        float duration = transitionDuration / 2f;
-        float startVol = musicSrc.volume;
+        musicSrc.volume = start;
+        if (start == 0f)
+        {
+            musicSrc.UnPause();
+        }
+
         float t = 0f;
-        while (t < duration)
+        while (t < transitionDuration)
         {
             t += Time.deltaTime;
-            musicSrc.volume = Mathf.Lerp(startVol, 0f, t / duration);
+            musicSrc.volume = Mathf.Lerp(start, end, t / transitionDuration);
             yield return null;
         }
-        musicSrc.volume = 0f;
-    }
 
-    private IEnumerator FadeInMusic()
-    {
-        float duration = transitionDuration / 2f;
-        float t = 0f;
-        while (t < duration)
+        musicSrc.volume = end;
+        if (end == 0f)
         {
-            t += Time.deltaTime;
-            musicSrc.volume = Mathf.Lerp(0f, 1f, t / duration);
-            yield return null;
+            musicSrc.Pause();
         }
-        musicSrc.volume = 1f;
     }
     
     private AudioClip GetMusicForScene(string sceneName)

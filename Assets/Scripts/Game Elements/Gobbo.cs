@@ -20,7 +20,7 @@ public class Gobbo : MonoBehaviour
 
     // Stats
     private bool immobilized = false;
-    private bool inHouse = true;
+    // private bool inHouse = true;
     private bool facingRight;
     private float cycleCounter = 0;
     private float moveX;
@@ -125,12 +125,6 @@ public class Gobbo : MonoBehaviour
     void HandleWeaponInput() {
         if (Input.GetButtonDown("Use"))
         {
-            /*
-            if (currItem is Ranged && inHouse) {
-                print("Furny: You know how I hate weapons inside the house, dear!");
-                return;
-            }
-            */
 
             if (currItem is Weapon)
             {
@@ -155,7 +149,7 @@ public class Gobbo : MonoBehaviour
                         animator.speed = 1f; // Reset animator speed
 
                         audioSrc.PlayOneShot(((Weapon)currItem).GetNoise());
-                        
+
                         animator.SetTrigger(currItem.name); // includes a call to Use
                     }
                 }
@@ -199,6 +193,7 @@ public class Gobbo : MonoBehaviour
         cycleCounter = cycleCounter - Time.deltaTime;
     }
 
+    /*
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("House")) {
@@ -211,7 +206,7 @@ public class Gobbo : MonoBehaviour
         if (other.gameObject.CompareTag("House")) {
             inHouse = false;
         }
-    }
+    }*/
 
     public void OnActionComplete()
     {

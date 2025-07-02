@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class NightManager : MonoBehaviour
@@ -6,11 +7,12 @@ public class NightManager : MonoBehaviour
     public static NightManager Instance; // Singleton pattern
 
     [Header("Night Settings")]
-    [SerializeField] private int hoursInNight = 8;
     [SerializeField] private AudioClip[] hourTolls;
-
+    [SerializeField] private int hoursInNight = 8;
+    [SerializeField] private int wavesPerHour = 3;
     // Stats
     private int hour = 0; // hours since 10:00 PM
+    private int wave = 0;
 
     // Components
     private AudioSource audioSrc;
@@ -35,34 +37,52 @@ public class NightManager : MonoBehaviour
     public void ResetNight()
     {
         hour = 0;
-        audioSrc.PlayOneShot(hourTolls[0]);
+        wave = -1;
     }
 
-    public void Increment()
+    public IEnumerator IncrementWave()
     {
-        hour++;
-        if (hour >= hoursInNight)
+        wave++;
+        if (wave >= wavesPerHour)
         {
-            SceneTransitionManager.Instance.TransitionToWin();
+            wave = 0;
+            hour++;
+            print("Level your puss puss up!");
+            GameManager.Instance.IncreaseDifficulty();
         }
-        else
-        {
+
+        UIManager.Instance.UpdateTime();
+
+        if (wave == 0)
+        { // first wave of the hour
+            yield return SceneTransitionManager.Instance.FadeMusic(1f, 0f);
             audioSrc.PlayOneShot(hourTolls[hour]);
-            UIManager.Instance.UpdateTime();
+            yield return new WaitForSeconds(hourTolls[hour].length);
+            yield return SceneTransitionManager.Instance.FadeMusic(0f, 1f);
+            yield return Furny.Instance.WorriedDialogue();
         }
     }
 
     public int GetHour() { return hour; }
+    public int GetWave() { return wave; }
 
     public string GetTime()
     {
-    int timeHour = 22 + hour; // 22 is 10 PM in 24-hour time
-    int displayHour = timeHour % 12;
-    if (displayHour == 0) displayHour = 12;
 
-    string period = timeHour < 24 ? "PM" : "AM";
-    return $"{displayHour}:00 {period}";
+        if (hour == hoursInNight) { // because 0-indexed, this means final boss
+            return "he's coming...";
+        }
+        float hourFloat = hour + (float)wave / wavesPerHour;
+        int timeHour = 22 + Mathf.FloorToInt(hourFloat);
+        int displayHour = timeHour % 12;
+        if (displayHour == 0) displayHour = 12;
+
+        int minutes = Mathf.RoundToInt((hourFloat % 1f) * 60);
+        string period = timeHour < 24 ? "PM" : "AM";
+
+        return $"{displayHour}:{minutes:00} {period}";
     }
 
     public int HoursInNight() { return hoursInNight; }
+    public int WavesPerHour() { return wavesPerHour; }
 }

@@ -1,14 +1,30 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class Furny : MonoBehaviour
 {
+
+    public static Furny Instance;
+
     [Header("Furny Settings")]
     [SerializeField] private Item fireball;
     [SerializeField] private Item pinecone;
     [SerializeField] private float healAmount;
     [SerializeField] private float interval;
+
+    [Header("Dialogue Settings")]
+    private string[] fedDialogue = {"I'm hungry!", "Feed me, Gobbo!", "So hungry...", "Yummy!", "More pinecones, please.", "Thanks!", "Ooooh! That one had sap!", "Nom nom nom." };
+    [SerializeField] AudioClip[] fedAudio;
+    private string[] worriedDialogue = { "Something's coming...", "I smell trouble, and it's not burnt wood", "They're out there, I know it.", "Why does it always get worse?", "Hold me tighter. Wait, I’m a furnace.", "So much for a silent night." };
+    [SerializeField] AudioClip[] worriedAudio;
+    private string[] hurtDialogue = { "Ow!", "Owchie", "You broke my pilot light!", "My knobs! Be gentle!", "You ever punch a furnace? Hurts both of us!" };
+    [SerializeField] AudioClip[] hurtAudio;
+    private float lastSpoken = 0f;
+    private float promptFrequency = 3f;
+    [SerializeField] GameObject dialogueBubble;
 
     // Stats
     private Coroutine activeCoroutine;
@@ -18,6 +34,18 @@ public class Furny : MonoBehaviour
     Stat health;
     Light2D fire;
     Animator anim;
+    AudioSource audioSrc;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // Prevent duplicates
+            return;
+        }
+
+        Instance = this;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +53,7 @@ public class Furny : MonoBehaviour
         fire = GetComponentInChildren<Light2D>();
         health = GetComponent<Health>();
         anim = GetComponent<Animator>();
+        audioSrc = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,6 +66,7 @@ public class Furny : MonoBehaviour
             dead = true;
             anim.SetTrigger("Die");
         }
+        lastSpoken += Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -77,10 +107,64 @@ public class Furny : MonoBehaviour
                 Inventory.Instance.Remove(pinecone);
                 if (health.GetStat() + healAmount <= health.GetMax())
                 {
+                    StartCoroutine(FedDialogue());
                     health.Heal(healAmount);
                 }
             }
             yield return new WaitForSeconds(interval);
+        }
+    }
+    
+    // I'm so sorry about this, this definitely could be consolidated to be more modular but I was lazy...
+
+    public IEnumerator FedDialogue()
+    {
+        if (lastSpoken > promptFrequency)
+        {
+            AudioClip clip = fedAudio[Random.Range(0, fedAudio.Length)];
+            string quip = fedDialogue[Random.Range(0, fedDialogue.Length)];
+            lastSpoken = 0f;
+            audioSrc.PlayOneShot(clip);
+            dialogueBubble.GetComponentInChildren<TextMeshProUGUI>().text = quip;
+            dialogueBubble.SetActive(true);
+
+            yield return new WaitForSeconds(clip.length);
+            yield return new WaitForSeconds(2f);
+            dialogueBubble.SetActive(false);
+        }
+    }
+
+    public IEnumerator WorriedDialogue()
+    {
+        if (lastSpoken > promptFrequency)
+        {
+            AudioClip clip = worriedAudio[Random.Range(0, worriedAudio.Length)];
+            string quip = worriedDialogue[Random.Range(0, worriedDialogue.Length)];
+            lastSpoken = 0f;
+            audioSrc.PlayOneShot(clip);
+            dialogueBubble.GetComponentInChildren<TextMeshProUGUI>().text = quip;
+            dialogueBubble.SetActive(true);
+
+            yield return new WaitForSeconds(clip.length);
+            yield return new WaitForSeconds(2f);
+            dialogueBubble.SetActive(false);
+        }
+    }
+
+    public IEnumerator HurtDialogue()
+    {
+        if (lastSpoken > promptFrequency)
+        {
+            AudioClip clip = hurtAudio[Random.Range(0, hurtAudio.Length)];
+            string quip = hurtDialogue[Random.Range(0, hurtDialogue.Length)];
+            lastSpoken = 0f;
+            audioSrc.PlayOneShot(clip);
+            dialogueBubble.GetComponentInChildren<TextMeshProUGUI>().text = quip;
+            dialogueBubble.SetActive(true);
+
+            yield return new WaitForSeconds(clip.length);
+            yield return new WaitForSeconds(5f);
+            dialogueBubble.SetActive(false);
         }
     }
 

@@ -36,8 +36,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateStat(GameObject statBar, float currStat, float maxStat)
     {
-        RectTransform rt = statBar.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(maxStat * 2, rt.sizeDelta.y); // adjust max health bar width
 
         Slider slider = statBar.GetComponent<Slider>();
         slider.maxValue = maxStat; // adjust max health bar fill

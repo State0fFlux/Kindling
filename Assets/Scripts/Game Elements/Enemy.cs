@@ -29,7 +29,8 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
 
-        if (spawnNoise.Length > 0) {
+        if (spawnNoise.Length > 0)
+        {
             audioSrc.PlayOneShot(spawnNoise[Random.Range(0, spawnNoise.Length)]);
         }
 
@@ -50,8 +51,11 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = direction * Global.speed * speedMult;
-        anim.SetFloat("Speed", rb.linearVelocity.sqrMagnitude);
+        if (rb.bodyType != RigidbodyType2D.Static)
+        {
+            rb.linearVelocity = direction * Global.speed * speedMult;
+            anim.SetFloat("Speed", rb.linearVelocity.sqrMagnitude);
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -61,19 +65,33 @@ public class Enemy : MonoBehaviour
             return;
         }
         if (collision.collider.CompareTag("HouseWalls") || collision.collider.CompareTag("Furny"))
+        {
+            Health targetHealth = collision.collider.GetComponentInParent<Health>();
+            if (targetHealth != null)
             {
-                Health targetHealth = collision.collider.GetComponentInParent<Health>();
-                if (targetHealth != null)
+                if (collision.collider.CompareTag("Furny"))
                 {
-                    anim.SetTrigger("Attack");
-
-                    if (attackNoise.Length > 0) {
-                        audioSrc.PlayOneShot(attackNoise[Random.Range(0, attackNoise.Length)]);
-                    }
-                    
-                    targetHealth.Hurt(damage);
-                    lastAttackTime = Time.time;
+                    StartCoroutine(Furny.Instance.HurtDialogue());
                 }
+
+                anim.SetTrigger("Attack");
+
+                if (attackNoise.Length > 0)
+                {
+                    audioSrc.PlayOneShot(attackNoise[Random.Range(0, attackNoise.Length)]);
+                }
+
+                targetHealth.Hurt(damage);
+                lastAttackTime = Time.time;
             }
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (CompareTag("Boss"))
+        {
+            SceneTransitionManager.Instance.TransitionToWin();
+        }  
     }
 }
