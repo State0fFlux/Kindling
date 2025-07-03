@@ -28,10 +28,9 @@ public class Furny : MonoBehaviour
 
     // Stats
     private Coroutine activeCoroutine;
-    bool dead = false;
 
     // Components
-    Stat health;
+    Health health;
     Light2D fire;
     Animator anim;
     AudioSource audioSrc;
@@ -54,6 +53,8 @@ public class Furny : MonoBehaviour
         health = GetComponent<Health>();
         anim = GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
+
+        health.onDeathCallback = SceneTransitionManager.Instance.TransitionToLose;
     }
 
     // Update is called once per frame
@@ -61,11 +62,6 @@ public class Furny : MonoBehaviour
     {
         // Decrease health points over time
         health.Decay(1f);
-        if (health.GetStat() <= 0f && !dead)
-        {
-            dead = true;
-            anim.SetTrigger("Die");
-        }
         lastSpoken += Time.deltaTime;
     }
 

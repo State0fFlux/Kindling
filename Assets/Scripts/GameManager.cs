@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [Header("Game Settings")]
     [SerializeField] private float birdInterval = 5f;
     [SerializeField] private float presentInterval = 7f;
+    [SerializeField] private int minEnemies = 3;
+    [SerializeField] private int maxEnemies = 6;
     [SerializeField] private float downTime = 5f; // time before first wave starts
 
     [Header("Audio Settings")]
@@ -21,13 +23,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] elves;
     [SerializeField] private Transform[] presentSpawnpoints;
     [SerializeField] private GameObject santaBoss;
+    [SerializeField] private GameObject pauseMenu;
 
     // Stats
     private AudioSource audioSrc;
     private List<GameObject> activeEnemies = new List<GameObject>();
+    private int enemyCount = 0;
     private bool isSpawningWave = false;
     private float difficulty = 0f;
     private bool isFinalBossActive = false;
+    private bool paused = false;
     private GameObject santaInstance;
 
     void Awake()
@@ -52,17 +57,51 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        print(enemyCount);
+        if (Input.GetKeyDown(KeyCode.Escape) && !paused)
         {
-            SceneTransitionManager.Instance.TransitionToLobby();
+            FindFirstObjectByType<ButtonManager>().PlayRandButtonNoise();
+            Pause();
         }
+        /*
         for (int i = activeEnemies.Count - 1; i >= 0; i--)
         {
             if (activeEnemies[i] == null)
             {
                 activeEnemies.RemoveAt(i);
             }
+        }*/
+    }
+
+    public void Pause()
+    {
+        SceneTransitionManager.Instance.PlayCloser();
+
+        AudioSource[] allAudio = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        foreach (var audio in allAudio)
+        {
+            audio.Pause();
         }
+
+        paused = true;
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        SceneTransitionManager.Instance.PlayOpener();
+
+        AudioSource[] allAudio = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+        foreach (var audio in allAudio)
+        {
+            audio.UnPause();
+        }
+
+        FindFirstObjectByType<AudioListener>().enabled = true;
+        paused = false;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     private IEnumerator WaveSystem()
@@ -75,7 +114,7 @@ public class GameManager : MonoBehaviour
             // Final boss logic
             if (IsFinalWave() && !isFinalBossActive)
             {
-                if (activeEnemies.Count == 0)
+                if (enemyCount == 0) //(activeEnemies.Count == 0)
                 {
                     isFinalBossActive = true;
                     santaInstance = Instantiate(santaBoss);
@@ -83,7 +122,7 @@ public class GameManager : MonoBehaviour
                 }
             }
             // Regular wave logic
-            else if (!isSpawningWave && activeEnemies.Count == 0)
+            else if (!isSpawningWave && enemyCount == 0)//activeEnemies.Count == 0)
             {
                 yield return StartCoroutine(HandleNextWave());
             }
@@ -100,10 +139,9 @@ public class GameManager : MonoBehaviour
         }
 
         isSpawningWave = true;
-        print($"Spawning wave {NightManager.Instance.GetWave()} of hour {NightManager.Instance.GetHour()}");
 
-        SpawnEnemyCluster();
-        yield return new WaitUntil(() => activeEnemies.Count == 0); // wait until all are dead
+        StartCoroutine(SpawnEnemyCluster());
+        yield return new WaitUntil(() => enemyCount == 0); //activeEnemies.Count == 0); // wait until all are dead
         isSpawningWave = false;
     }
 
@@ -156,15 +194,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnemyCluster()
+    private IEnumerator SpawnEnemyCluster()
     {
-        int totalEnemies = Mathf.RoundToInt(Mathf.Lerp(1, 3, difficulty));
-
+        int totalEnemies = Mathf.RoundToInt(Mathf.Lerp(minEnemies, maxEnemies, difficulty));
+        enemyCount += totalEnemies;
         for (int i = 0; i < totalEnemies; i++)
         {
             GameObject enemy = Random.value < difficulty ? tree : elves[Random.Range(0, elves.Length)];
             GameObject instance = Instantiate(enemy);
-            activeEnemies.Add(instance);
+            if (instance.CompareTag("Boss"))
+            {
+                instance.GetComponent<Health>().onDeathCallback = () =>
+                {
+                    // trigger win or cutscene
+                    SceneTransitionManager.Instance.TransitionToWin();
+                };
+            }
+            else
+            {
+                instance.GetComponent<Health>().onDeathCallback = () => enemyCount--;
+            } 
+
+            //activeEnemies.Add(instance);
+            yield return new WaitForSeconds(Random.Range(1, 3)); // stagger enemies
         }
     }
 
@@ -172,6 +224,5 @@ public class GameManager : MonoBehaviour
     {
         difficulty += 1f / (NightManager.Instance.HoursInNight() - 1);
         difficulty = Mathf.Clamp01(difficulty);
-        Debug.Log($"Hour {NightManager.Instance.GetHour()} | Difficulty increased to {difficulty:F2}");
     }
 }

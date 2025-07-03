@@ -52,7 +52,7 @@ public class SceneTransitionManager : MonoBehaviour
         musicSrc = gameObject.AddComponent<AudioSource>();
         musicSrc.loop = true;
         musicSrc.volume = 1f;
-        
+
         musicSrc.clip = lobbyTheme;
         musicSrc.Play();
         currentMusic = lobbyTheme;
@@ -142,7 +142,7 @@ public class SceneTransitionManager : MonoBehaviour
             musicSrc.Pause();
         }
     }
-    
+
     private AudioClip GetMusicForScene(string sceneName)
     {
         return sceneName switch
@@ -157,5 +157,15 @@ public class SceneTransitionManager : MonoBehaviour
             // Add others as needed
             _ => null
         };
+    }
+
+    public void PlayOpener()
+    {
+        sfxSrc.PlayOneShot(opening);
+    }
+
+    public void PlayCloser()
+    {
+        sfxSrc.PlayOneShot(closing);
     }
 }

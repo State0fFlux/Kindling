@@ -47,7 +47,6 @@ public class NightManager : MonoBehaviour
         {
             wave = 0;
             hour++;
-            print("Level your puss puss up!");
             GameManager.Instance.IncreaseDifficulty();
         }
 

@@ -67,7 +67,6 @@ public class Inventory : MonoBehaviour
     {
         if (items[selectedIndex] == null && equipped)
         {
-            Debug.Log("you can't equip nothing!");
             this.equipped = false;
         }
         else

@@ -87,11 +87,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    public void OnBossDeath()
     {
-        if (CompareTag("Boss"))
-        {
-            SceneTransitionManager.Instance.TransitionToWin();
-        }  
+        SceneTransitionManager.Instance.TransitionToWin();
     }
 }

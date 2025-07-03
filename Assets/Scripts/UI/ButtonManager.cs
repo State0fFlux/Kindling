@@ -14,39 +14,46 @@ public class ButtonManager : MonoBehaviour
         cameraMover = GetComponent<CameraMover>();
     }
 
-    public void Play()
+    public void PlayRandButtonNoise()
     {
         GetComponent<AudioSource>().PlayOneShot(buttonClicks[Random.Range(0, buttonClicks.Length)]);
+    }
+
+    public void Play()
+    {
+        PlayRandButtonNoise();
         SceneTransitionManager.Instance.TransitionToGame();
     }
 
     public void Lobby()
     {
-        GetComponent<AudioSource>().PlayOneShot(buttonClicks[Random.Range(0, buttonClicks.Length)]);
+        PlayRandButtonNoise();
         SceneTransitionManager.Instance.TransitionToLobby();
     }
 
     public void HowToPlay()
     {
-        GetComponent<AudioSource>().PlayOneShot(buttonClicks[Random.Range(0, buttonClicks.Length)]);
+        PlayRandButtonNoise();
         cameraMover.MoveTo(howToPlayView);
     }
 
     public void Credits()
     {
-        GetComponent<AudioSource>().PlayOneShot(buttonClicks[Random.Range(0, buttonClicks.Length)]);
+        PlayRandButtonNoise();
         cameraMover.MoveTo(creditsView);
     }
 
     public void Quit()
     {
-        GetComponent<AudioSource>().PlayOneShot(buttonClicks[Random.Range(0, buttonClicks.Length)]);
+        PlayRandButtonNoise();
         SceneTransitionManager.Instance.Quit();
     }
 
     public void BackToLobby()
     {
-        GetComponent<AudioSource>().PlayOneShot(buttonClicks[Random.Range(0, buttonClicks.Length)]);
+        PlayRandButtonNoise();
         cameraMover.MoveTo(lobbyView);
     }
+
+    
 }

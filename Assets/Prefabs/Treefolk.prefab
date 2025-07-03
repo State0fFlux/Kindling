@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ddd412ba5e454891b119434b2ece433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMult: 0.25
+  speedMult: 0.5
   damage: 20
   cooldown: 5
   spawnNoise:

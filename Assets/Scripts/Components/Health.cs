@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Health : Stat
 {
+
+    public Action onDeathCallback;
+    
     [Header("Health Settings")]
     [SerializeField] private Color hurtColor = Color.red;
     [SerializeField] private Color healColor = Color.green;
@@ -58,8 +62,9 @@ public class Health : Stat
         StartCoroutine(Flash()); // add visual feedback
         base.Hurt(amount); // apply normal health reduction
 
-        if (GetStat() > 0f && hurtNoise.Length > 0) {
-            audioSrc.PlayOneShot(hurtNoise[Random.Range(0, hurtNoise.Length)]);
+        if (GetStat() > 0f && hurtNoise.Length > 0)
+        {
+            audioSrc.PlayOneShot(hurtNoise[UnityEngine.Random.Range(0, hurtNoise.Length)]);
         }
     }
 
@@ -72,7 +77,7 @@ public class Health : Stat
 
         if (healNoise != null)
         {
-            audioSrc.pitch = 1 + Random.Range(-0.5f, 0.5f);
+            audioSrc.pitch = 1 + UnityEngine.Random.Range(-0.5f, 0.5f);
             audioSrc.PlayOneShot(healNoise);
             audioSrc.pitch = 1;
         }
@@ -97,6 +102,12 @@ public class Health : Stat
     private IEnumerator Die()
     {
         hasDied = true;
+        /*
+        Animator animator = GetComponent<Animator>();
+        if (animator != null && HasTrigger(animator, "Die"))
+        {
+            animator.SetTrigger("Die");
+        }*/
 
         // Disable all colliders
         foreach (var col in cols)
@@ -108,12 +119,12 @@ public class Health : Stat
         {
             rb.bodyType = RigidbodyType2D.Static;
         }
-        
+
         if (deathNoise.Length > 0)
-            {
-                audioSrc.PlayOneShot(deathNoise[Random.Range(0, deathNoise.Length)]);
-            }
-        
+        {
+            audioSrc.PlayOneShot(deathNoise[UnityEngine.Random.Range(0, deathNoise.Length)]);
+        }
+
         float timer = 0f;
 
         while (timer < flashDuration)
@@ -124,7 +135,19 @@ public class Health : Stat
             timer += Time.deltaTime;
             yield return null;
         }
-
+        onDeathCallback?.Invoke();
         Destroy(gameObject);
+    }
+    
+    bool HasTrigger(Animator anim, string triggerName)
+    {
+        foreach (var param in anim.parameters)
+        {
+            if (param.name == triggerName && param.type == AnimatorControllerParameterType.Trigger)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
