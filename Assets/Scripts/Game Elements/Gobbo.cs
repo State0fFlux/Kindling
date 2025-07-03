@@ -193,21 +193,6 @@ public class Gobbo : MonoBehaviour
         cycleCounter = cycleCounter - Time.deltaTime;
     }
 
-    /*
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("House")) {
-            inHouse = true;
-        }
-    }
-
-        void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("House")) {
-            inHouse = false;
-        }
-    }*/
-
     public void OnActionComplete()
     {
         immobilized = false; // Reset immobilization after action

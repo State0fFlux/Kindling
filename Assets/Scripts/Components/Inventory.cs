@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public class Inventory : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class Inventory : MonoBehaviour
     // Stats
     private bool equipped = true;
     private int selectedIndex = 0;
-    private ItemStack[] items; // array to hold items in the inventory
+    private ItemStack[] usables; // array to hold items in the inventory
+    private ItemStack fuelStack;
 
     // Components
     private AudioSource audioSrc;
@@ -31,41 +33,41 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         audioSrc = GetComponent<AudioSource>();
-        items = new ItemStack[slots]; // initialize the inventory with the specified number of slots
+        usables = new ItemStack[slots]; // initialize the inventory with the specified number of slots
 
         for (int i = 0; i < slots; i++)
         {
             if (i < initialItems.Length)
             {
-                items[i] = new ItemStack(initialItems[i], initialCounts[i]); // fill the inventory with initial items
+                usables[i] = new ItemStack(initialItems[i], initialCounts[i]); // fill the inventory with initial items
             }
             else
             {
-                items[i] = null; // fill remaining slots with null
+                usables[i] = null; // fill remaining slots with null
             }
         }
 
-        UIManager.Instance.InitializeInventory(items, selectedIndex, equipped, slots);
+        UIManager.Instance.InitializeInventory(usables, selectedIndex, equipped, slots);
     }
 
     public Item GetEquipped()
     {
         if (equipped)
         {
-            return items[selectedIndex].GetItem();
+            return usables[selectedIndex].GetItem();
         }
         return null;
     }
 
     public Item GetSelected()
     {
-        if (items[selectedIndex] == null) return null;
-        return items[selectedIndex].GetItem();
+        if (usables[selectedIndex] == null) return null;
+        return usables[selectedIndex].GetItem();
     }
 
     public void SetEquipped(bool equipped)
     {
-        if (items[selectedIndex] == null && equipped)
+        if (usables[selectedIndex] == null && equipped)
         {
             this.equipped = false;
         }
@@ -73,7 +75,7 @@ public class Inventory : MonoBehaviour
         {
             this.equipped = equipped;
         }
-        UIManager.Instance.UpdateInventory(items, selectedIndex, this.equipped);
+        UIManager.Instance.UpdateInventory(usables, selectedIndex, this.equipped, fuelStack);
 
         audioSrc.pitch = equipped ? 1.1f : 0.9f;
         audioSrc.Play();
@@ -81,13 +83,13 @@ public class Inventory : MonoBehaviour
 
     public void CycleLeft()
     {
-        selectedIndex = (selectedIndex - 1 + items.Length) % items.Length; // wrap around to the last item if going left from the first item
+        selectedIndex = (selectedIndex - 1 + usables.Length) % usables.Length; // wrap around to the last item if going left from the first item
         SetEquipped(true);
     }
 
     public void CycleRight()
     {
-        selectedIndex = (selectedIndex + 1) % items.Length; // wrap around to the first item if going right from the last item
+        selectedIndex = (selectedIndex + 1) % usables.Length; // wrap around to the first item if going right from the last item
         SetEquipped(true);
     }
 
@@ -98,10 +100,23 @@ public class Inventory : MonoBehaviour
 
     public void Add(Item item, int amount)
     {
+        if (item is Fuel) {
+            if (fuelStack == null)
+            {
+                fuelStack = new ItemStack(item, amount);
+            }
+            else
+            {
+                fuelStack.Add(amount);
+            }
+            UIManager.Instance.UpdateInventory(usables, selectedIndex, equipped, fuelStack);
+            return;
+        }
+
         // try to add to existing stack
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < usables.Length; i++)
         {
-            ItemStack stack = items[i];
+            ItemStack stack = usables[i];
             if (stack != null && stack.GetItem().Equals(item))
             {
                 if (item is Fireball)
@@ -113,26 +128,26 @@ public class Inventory : MonoBehaviour
                 {
                     SetEquipped(true);
                 }
-                UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+                UIManager.Instance.UpdateInventory(usables, selectedIndex, equipped, fuelStack);
                 return;
             }
         }
 
         // no existing stack found, create a new one
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < usables.Length; i++)
         {
-            if (items[i] == null)
+            if (usables[i] == null)
             {
                 if (item is Fireball)
                 {
                     audioSrc.PlayOneShot(fireAdd);
                 }
-                items[i] = new ItemStack(item, amount);
+                usables[i] = new ItemStack(item, amount);
                 if (i == selectedIndex)
                 {
                     SetEquipped(true);
                 }
-                UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+                UIManager.Instance.UpdateInventory(usables, selectedIndex, equipped, fuelStack);
                 return;
             }
         }
@@ -140,33 +155,49 @@ public class Inventory : MonoBehaviour
 
     public void Remove(Item item)
     {
-    for (int i = 0; i < items.Length; i++)
-    {
-        ItemStack stack = items[i];
-        if (stack != null && stack.GetItem().Equals(item))
+        if (item is Fuel && fuelStack != null)
         {
-            stack.Remove();
-
-            if (stack.GetCount() <= 0)
+            fuelStack.Remove();
+            if (fuelStack.GetCount() <= 0)
             {
-                items[i] = null;
-
-                // If this was the equipped item, unequip it
-                if (i == selectedIndex)
-                {
-                    SetEquipped(false);
-                }
+                fuelStack = null;
             }
-
-            UIManager.Instance.UpdateInventory(items, selectedIndex, equipped);
+            UIManager.Instance.UpdateInventory(usables, selectedIndex, equipped, fuelStack);
             return;
         }
-    }
+
+        for (int i = 0; i < usables.Length; i++)
+        {
+            ItemStack stack = usables[i];
+            if (stack != null && stack.GetItem().Equals(item))
+            {
+                stack.Remove();
+
+                if (stack.GetCount() <= 0)
+                {
+                    usables[i] = null;
+
+                    // If this was the equipped item, unequip it
+                    if (i == selectedIndex)
+                    {
+                        SetEquipped(false);
+                    }
+                }
+
+                UIManager.Instance.UpdateInventory(usables, selectedIndex, equipped, fuelStack);
+                return;
+            }
+        }
     }
 
     public bool Contains(Item item)
     {
-        foreach (ItemStack stack in items)
+
+        if (item is Fuel) {
+            return fuelStack != null && fuelStack.GetCount() > 0;
+        }
+
+        foreach (ItemStack stack in usables)
         {
             if (stack != null && stack.GetItem().Equals(item))
             {

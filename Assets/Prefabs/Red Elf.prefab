@@ -75,8 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statBar: {fileID: 0}
-  maxStat: 20
-  currStat: 20
+  maxStat: 10
+  currStat: 10
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
   healColor: {r: 0, g: 1, b: 0, a: 1}
   flashDuration: 2

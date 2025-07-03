@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance; // Singleton pattern
 
     [Header("Game Settings")]
+    [SerializeField] private float debugTimeScale = 1f;
     [SerializeField] private float birdInterval = 5f;
     [SerializeField] private float presentInterval = 7f;
-    [SerializeField] private int minEnemies = 3;
-    [SerializeField] private int maxEnemies = 6;
+    [SerializeField] private int minEnemies = 1;
+    [SerializeField] private int maxEnemies = 4;
+    [SerializeField] private int maxTrees = 2;
     [SerializeField] private float downTime = 5f; // time before first wave starts
 
     [Header("Audio Settings")]
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = debugTimeScale;
         audioSrc = GetComponent<AudioSource>();
         NightManager.Instance.ResetNight();
 
@@ -63,14 +66,6 @@ public class GameManager : MonoBehaviour
             FindFirstObjectByType<ButtonManager>().PlayRandButtonNoise();
             Pause();
         }
-        /*
-        for (int i = activeEnemies.Count - 1; i >= 0; i--)
-        {
-            if (activeEnemies[i] == null)
-            {
-                activeEnemies.RemoveAt(i);
-            }
-        }*/
     }
 
     public void Pause()
@@ -198,9 +193,11 @@ public class GameManager : MonoBehaviour
     {
         int totalEnemies = Mathf.RoundToInt(Mathf.Lerp(minEnemies, maxEnemies, difficulty));
         enemyCount += totalEnemies;
+        int treeCounter = 0; // Keep track of how many trees have been spawned
         for (int i = 0; i < totalEnemies; i++)
         {
-            GameObject enemy = Random.value < difficulty ? tree : elves[Random.Range(0, elves.Length)];
+            GameObject enemy = Random.value < difficulty && treeCounter < maxTrees ? tree : elves[Random.Range(0, elves.Length)];
+            if (enemy == tree) treeCounter++;
             GameObject instance = Instantiate(enemy);
             if (instance.CompareTag("Boss"))
             {
@@ -213,7 +210,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 instance.GetComponent<Health>().onDeathCallback = () => enemyCount--;
-            } 
+            }
 
             //activeEnemies.Add(instance);
             yield return new WaitForSeconds(Random.Range(1, 3)); // stagger enemies

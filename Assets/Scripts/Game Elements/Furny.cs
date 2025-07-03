@@ -163,9 +163,4 @@ public class Furny : MonoBehaviour
             dialogueBubble.SetActive(false);
         }
     }
-
-    public void OnDeath()
-    {
-        SceneTransitionManager.Instance.TransitionToLose();
-    }
 }

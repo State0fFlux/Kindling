@@ -102,12 +102,6 @@ public class Health : Stat
     private IEnumerator Die()
     {
         hasDied = true;
-        /*
-        Animator animator = GetComponent<Animator>();
-        if (animator != null && HasTrigger(animator, "Die"))
-        {
-            animator.SetTrigger("Die");
-        }*/
 
         // Disable all colliders
         foreach (var col in cols)
