@@ -14,11 +14,10 @@ The game emphasizes tight resource loops and defensive strategy: fireballs must 
 - **Goal**: Survive the night!
 
 ## Features
-- Modular event "wave" system with timed event triggers and scalable difficulty to ensure engaging gameplay
+- Modular wave system with timed event triggers and scalable difficulty to ensure engaging gameplay
 - Multiple enemy types with unique movement and attack logic
 - Robust UI system to communicate changes in inventory, health, and stamina
 - Custom shaders for hurt/death feedback effects
-
 
 ## Technology Stack
 - **Engine**: Unity 6000.0.44f1
@@ -26,7 +25,7 @@ The game emphasizes tight resource loops and defensive strategy: fireballs must 
 - **Dev Tools**: Visual Studio Code, GitHub Desktop
 - **2D Design**: Pixquare, Unity Asset Store, itch.io
 - **Shaders**: Unity Shader Graph
-- **Sound Design**: itch.io
+- **Sound Design**: itch.io, Audacity
 
 _** Please view in-game credits for a comprehensive list of assets used_
 
