@@ -23,9 +23,9 @@ The game emphasizes tight resource loops and defensive strategy: fireballs must 
 - **Engine**: Unity 6000.0.44f1
 - **Languages**: C#
 - **Dev Tools**: Visual Studio Code, GitHub Desktop
-- **2D Design**: Pixquare, Unity Asset Store, itch.io
+- **2D Design**: Pixquare
 - **Shaders**: Unity Shader Graph
-- **Sound Design**: itch.io, Audacity
+- **Sound Design**: Audacity
 
 _** Please view in-game credits for a comprehensive list of assets used_
 
