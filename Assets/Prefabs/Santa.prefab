@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ddd412ba5e454891b119434b2ece433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMult: 0.25
+  speedMult: 0.5
   damage: 40
   cooldown: 5
   spawnNoise:
@@ -71,8 +71,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statBar: {fileID: 0}
-  maxStat: 50
-  currStat: 50
+  maxStat: 80
+  currStat: 80
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
   healColor: {r: 0, g: 1, b: 0, a: 1}
   flashDuration: 5

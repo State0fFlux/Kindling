@@ -13,6 +13,7 @@ public class Gobbo : MonoBehaviour
 
     [Header("UI Settings")]
     [SerializeField] private float cycleCooldown; // reference to the health bar UI element
+    [SerializeField] private AudioClip errorNoise;
 
     [Header("Game Objects")]
     [SerializeField] private GameObject basket; // this has the trigger collider
@@ -125,8 +126,8 @@ public class Gobbo : MonoBehaviour
     void HandleWeaponInput() {
         if (Input.GetButtonDown("Use"))
         {
-
-            if (currItem is Weapon)
+            if (currItem is Basket) return;
+            else if (currItem is Weapon)
             {
                 aimInput = new Vector2(facingRight ? 1 : -1, Input.GetAxisRaw("Aim"));
                 if (aimInput.y < 0) aimInput.y = 0; // Temporary fix, prevent downward aim
@@ -152,7 +153,19 @@ public class Gobbo : MonoBehaviour
 
                         animator.SetTrigger(currItem.name); // includes a call to Use
                     }
+                    else
+                    {
+                        audioSrc.PlayOneShot(errorNoise);
+                    }
                 }
+                else
+                {
+                    audioSrc.PlayOneShot(errorNoise);
+                }
+            }
+            else
+            {
+                audioSrc.PlayOneShot(errorNoise);
             }
         }
     }
@@ -208,6 +221,9 @@ public class Gobbo : MonoBehaviour
 
     public void TrySneeze()
     {
-        if (Random.value <= 0.4f) animator.SetTrigger("Sneeze");
+        if (Random.value <= 0.3f)
+        {
+            animator.SetTrigger("Sneeze");
+        }
     }
 }

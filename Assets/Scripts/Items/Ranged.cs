@@ -31,6 +31,9 @@ public abstract class Ranged : Weapon
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (currHits >= maxHits)
+            return;
+
         GameObject obj = collision.collider.gameObject;
         if (obj.layer == LayerMask.NameToLayer("Uglywall"))
         {

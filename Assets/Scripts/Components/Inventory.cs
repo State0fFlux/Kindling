@@ -76,8 +76,7 @@ public class Inventory : MonoBehaviour
             this.equipped = equipped;
         }
         UIManager.Instance.UpdateInventory(usables, selectedIndex, this.equipped, fuelStack);
-
-        audioSrc.pitch = equipped ? 1.1f : 0.9f;
+        audioSrc.pitch = equipped ? 1.1f : 0.8f;
         audioSrc.Play();
     }
 

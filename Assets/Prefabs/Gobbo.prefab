@@ -58,6 +58,7 @@ MonoBehaviour:
   staminaRegenRate: 5
   sprintCost: 20
   cycleCooldown: 0.2
+  errorNoise: {fileID: 8300000, guid: 33c81d19180204e858fe858e2019a69a, type: 3}
   basket: {fileID: 2551820898386336026}
 --- !u!114 &2960353155086253449
 MonoBehaviour:
@@ -86,10 +87,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3799debb5e24458a53d232fefb25ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots: 4
+  slots: 3
   initialItems:
-  - {fileID: 2022755337554948150, guid: 0d71ead194a274027a00757c6fe68342, type: 3}
   - {fileID: -5510175389193367650, guid: 310e56c3b0cee4715ac63c21a961fbc3, type: 3}
+  - {fileID: 2022755337554948150, guid: 0d71ead194a274027a00757c6fe68342, type: 3}
   initialCounts: 0100000001000000
   fireAdd: {fileID: 8300000, guid: 41dbb84a254a940bea0093a1953914c7, type: 3}
 --- !u!50 &348563804956860879
@@ -243,8 +244,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 85048d39a0b244c9fb647e8e31926696, type: 3}
-  m_Resource: {fileID: 8300000, guid: 85048d39a0b244c9fb647e8e31926696, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4ae95e0fdfed7451ebfbd488b92eb5eb, type: 3}
+  m_Resource: {fileID: 8300000, guid: 4ae95e0fdfed7451ebfbd488b92eb5eb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

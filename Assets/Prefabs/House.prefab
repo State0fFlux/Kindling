@@ -851,10 +851,14 @@ MonoBehaviour:
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
   healColor: {r: 0, g: 1, b: 0, a: 1}
   flashDuration: 2
-  hurtNoise: []
+  hurtNoise:
+  - {fileID: 8300000, guid: bc2ecf71c070b4815baaf97feb16cc53, type: 3}
+  - {fileID: 8300000, guid: e00d1a9e0bb60437d992d46eccf52836, type: 3}
+  - {fileID: 8300000, guid: 3d0993ef5f13d471c939336ee8e7e1b2, type: 3}
   healNoise: {fileID: 0}
   deathNoise:
   - {fileID: 8300000, guid: 0043331abdcd549e9ae1700b3f8b52b7, type: 3}
+  - {fileID: 8300000, guid: 64ec491ce3bac481ba1d80209817845a, type: 3}
 --- !u!60 &862227221904397368
 PolygonCollider2D:
   m_ObjectHideFlags: 0

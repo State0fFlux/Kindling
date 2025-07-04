@@ -86,9 +86,4 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-
-    public void OnBossDeath()
-    {
-        SceneTransitionManager.Instance.TransitionToWin();
-    }
 }

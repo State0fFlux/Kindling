@@ -52,7 +52,7 @@ MonoBehaviour:
   damage: 25
   recoil: 0
   useNoise: {fileID: 8300000, guid: 17a17fa16b1c842898ee8c968dff1b53, type: 3}
-  staminaCost: 10
+  staminaCost: 50
 --- !u!212 &-1111174420377853565
 SpriteRenderer:
   m_ObjectHideFlags: 0

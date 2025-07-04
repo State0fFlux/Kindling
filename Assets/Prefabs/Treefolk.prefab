@@ -75,7 +75,7 @@ MonoBehaviour:
   currStat: 20
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
   healColor: {r: 0, g: 1, b: 0, a: 1}
-  flashDuration: 2
+  flashDuration: 3
   hurtNoise:
   - {fileID: 8300000, guid: 4ca794106977246d29f273d90f1a231e, type: 3}
   - {fileID: 8300000, guid: 3c2ab8f8e50074383a3ac31f0b067693, type: 3}

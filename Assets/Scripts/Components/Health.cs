@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
 
 public class Health : Stat
 {
@@ -52,6 +53,10 @@ public class Health : Stat
         if (GetStat() <= 0f && !hasDied)
         {
             StartCoroutine(Die());
+        }
+
+        if (gameObject.CompareTag("Boss")) {
+            print(GetStat());
         }
     }
 

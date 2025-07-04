@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        print(enemyCount);
         if (Input.GetKeyDown(KeyCode.Escape) && !paused)
         {
             FindFirstObjectByType<ButtonManager>().PlayRandButtonNoise();
@@ -113,6 +112,7 @@ public class GameManager : MonoBehaviour
                 {
                     isFinalBossActive = true;
                     santaInstance = Instantiate(santaBoss);
+                    santaInstance.GetComponent<Health>().onDeathCallback = SceneTransitionManager.Instance.TransitionToWin;
                     yield break;
                 }
             }
@@ -199,18 +199,7 @@ public class GameManager : MonoBehaviour
             GameObject enemy = Random.value < difficulty && treeCounter < maxTrees ? tree : elves[Random.Range(0, elves.Length)];
             if (enemy == tree) treeCounter++;
             GameObject instance = Instantiate(enemy);
-            if (instance.CompareTag("Boss"))
-            {
-                instance.GetComponent<Health>().onDeathCallback = () =>
-                {
-                    // trigger win or cutscene
-                    SceneTransitionManager.Instance.TransitionToWin();
-                };
-            }
-            else
-            {
-                instance.GetComponent<Health>().onDeathCallback = () => enemyCount--;
-            }
+            instance.GetComponent<Health>().onDeathCallback = () => enemyCount--;
 
             //activeEnemies.Add(instance);
             yield return new WaitForSeconds(Random.Range(1, 3)); // stagger enemies

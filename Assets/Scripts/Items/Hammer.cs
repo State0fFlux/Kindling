@@ -17,14 +17,14 @@ public class Hammer : Melee
 
             if (obj.CompareTag("Gift"))
             {
-                GetComponent<AudioSource>().Play();
+                //GetComponent<AudioSource>().Play();
                 Health health = obj.GetComponent<Health>();
                 health.Hurt(health.GetStat()); // destroy gift entirely
             }
 
             if (obj.CompareTag("HouseWalls"))
             {
-                GetComponent<AudioSource>().Play();
+                //GetComponent<AudioSource>().Play();
                 obj.GetComponent<Health>().Heal(damage);
             }
         }

@@ -16,12 +16,48 @@ public class Furny : MonoBehaviour
     [SerializeField] private float interval;
 
     [Header("Dialogue Settings")]
-    private string[] fedDialogue = {"I'm hungry!", "Feed me, Gobbo!", "So hungry...", "Yummy!", "More pinecones, please.", "Thanks!", "Ooooh! That one had sap!", "Nom nom nom." };
     [SerializeField] AudioClip[] fedAudio;
-    private string[] worriedDialogue = { "Something's coming...", "I smell trouble, and it's not burnt wood", "They're out there, I know it.", "Why does it always get worse?", "Hold me tighter. Wait, I’m a furnace.", "So much for a silent night." };
     [SerializeField] AudioClip[] worriedAudio;
-    private string[] hurtDialogue = { "Ow!", "Owchie", "You broke my pilot light!", "My knobs! Be gentle!", "You ever punch a furnace? Hurts both of us!" };
     [SerializeField] AudioClip[] hurtAudio;
+    private string[] fedDialogue = {
+        "I'm hungry!",
+        "Feed me, Gobbo!",
+        "So hungry...",
+        "Yummy!",
+        "More pinecones, please.",
+        "Thanks!",
+        "Ooooh! That one had sap!",
+        "Nom nom nom.",
+        "That hit the spot!",
+        "Mmm, crunchy on the outside, sappy on the inside!"
+    };
+    private string[] worriedDialogue = {
+        "Something's coming...",
+        "I smell trouble, and it's not burnt wood.",
+        "They're out there, I know it.",
+        "Why does it always get worse?",
+        "Hold me tighter! Wait, I'm a furnace.",
+        "So much for a silent night.",
+        "The shadows are too quiet...",
+        "My little heart can't take this anymore!",
+        "Did you hear that?",
+        "I don't like this. Not one bit."
+    };
+    private string[] hurtDialogue = {
+        "Ow!",
+        "Owchie!",
+        "You broke my pilot light!",
+        "My knobs! Be gentle!",
+        "You ever punch a furnace? Hurts both of us!",
+        "That dent's going on your tab.",
+        "Do I look like a punching bag?",
+        "You chip it, you fix it!",
+        "Ouch! What gives?",
+        "Jeez, someone has anger issues.",
+        "What's your damage?",
+        "What's gotten into you?"
+    };
+
     private float lastSpoken = 0f;
     private float promptFrequency = 3f;
     [SerializeField] GameObject dialogueBubble;
@@ -63,6 +99,11 @@ public class Furny : MonoBehaviour
         // Decrease health points over time
         health.Decay(1f);
         lastSpoken += Time.deltaTime;
+        if (health.GetStat() < health.GetMax() / 2) {
+            anim.SetBool("Hurt", true);
+        } else {
+            anim.SetBool("Hurt", false);
+        }
     }
 
     void FixedUpdate()
@@ -99,7 +140,7 @@ public class Furny : MonoBehaviour
             // Heal if pinecones are available
             if (Inventory.Instance.Contains(pinecone))
             {
-                Inventory.Instance.Add(fireball, 2); // give 2 fireballs for a quality of life rebalance
+                Inventory.Instance.Add(fireball, 2); // add 2 fireballs for quality of life
                 Inventory.Instance.Remove(pinecone);
                 if (health.GetStat() + healAmount <= health.GetMax())
                 {
